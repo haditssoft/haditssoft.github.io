@@ -2,7 +2,7 @@
 
 A comprehensive web application for browsing, searching, and studying Islamic hadith collections from 14 major hadith books.
 
-**[Live Demo](https://haditssoft.github.io/haditssoft)**
+**[Live Demo](https://haditssoft.github.io)**
 
 <!-- Replace the file below with your own screenshot -->
 ![Frontend Screenshot](screenshot.png)
