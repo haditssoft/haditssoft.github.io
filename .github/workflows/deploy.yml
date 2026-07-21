@@ -30,6 +30,7 @@ jobs:
 
       - name: Build
         env:
+          CI: false
           REACT_APP_DOMAIN_PREFIX_PROD: ${{ secrets.REACT_APP_DOMAIN_PREFIX_PROD }}
           REACT_APP_HOSTNAME_PROD: ${{ secrets.REACT_APP_HOSTNAME_PROD }}
           REACT_APP_DOMAIN_PREFIX_DEV: ${{ secrets.REACT_APP_DOMAIN_PREFIX_DEV }}
