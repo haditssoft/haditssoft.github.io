@@ -4,8 +4,8 @@
     "homepage": "https://haditssoft.github.io",
     "private": true,
     "engines": {
-        "node": "10.24.1",
-        "npm": "6.x"
+        "node": ">=10",
+        "npm": ">=6"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "5.5.0",
