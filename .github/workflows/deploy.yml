@@ -1,0 +1,58 @@
+name: Deploy React App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 14
+
+      - run: npm install
+
+      - name: Build
+        env:
+          REACT_APP_DOMAIN_PREFIX_PROD: ${{ secrets.REACT_APP_DOMAIN_PREFIX_PROD }}
+          REACT_APP_HOSTNAME_PROD: ${{ secrets.REACT_APP_HOSTNAME_PROD }}
+          REACT_APP_DOMAIN_PREFIX_DEV: ${{ secrets.REACT_APP_DOMAIN_PREFIX_DEV }}
+          REACT_APP_IP_SUFFIX_PROD: ${{ secrets.REACT_APP_IP_SUFFIX_PROD }}
+          REACT_APP_IP_SUFFIX_DEV: ${{ secrets.REACT_APP_IP_SUFFIX_DEV }}
+          REACT_APP_RECAPTCHA_KEY: ${{ secrets.REACT_APP_RECAPTCHA_KEY }}
+        run: npm run build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-22.04
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

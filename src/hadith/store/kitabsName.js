@@ -1,0 +1,14 @@
+export const SHAHIHBUKHARI = 'ShahihBukhari';
+export const SHAHIHMUSLIM = 'ShahihMuslim';
+export const SUNANTIRMIDZI = 'SunanTirmidzi';
+export const SUNANABUDAUD = 'SunanAbuDaud';
+export const SUNANNASAI = 'SunanNasai';
+export const SUNANIBNUMAJAH = 'SunanIbnuMajah';
+export const SUNANDARIMI = 'SunanDarimi';
+export const MUSNADAHMAD = 'MusnadAhmad';
+export const MUWATHAMALIK = 'MuwathaMalik';
+export const SUNANDARUQUTHNI = 'SunanDaruquthni';
+export const SHAHIHIBNUKHUZAIMAH = 'ShahihIbnuKhuzaimah';
+export const SHAHIHIBNUHIBBAN = 'ShahihIbnuHibban';
+export const ALMUSTADRAK = 'AlMustadrak';
+export const MUSNADSYAFII = 'MusnadSyafii';
