@@ -6,6 +6,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 
 import FormComponent from './FormComponent';
+import ForgotPassword from '../ForgotPassword/ForgotPassword';
 import { connect } from 'react-redux';
 import { GLOBALTHEME, LIGHTDARKSWITCH } from '../../store/action';
 import { dark } from '../../fungsi/getTheme';
@@ -30,6 +31,7 @@ const LoginForm = props => {
     const classes = useStyles();
     const [openDialog, setOpenDialog] = useState(false);
     const [startInVerifyMode, setStartInVerifyMode] = useState(false);
+    const [openForgotPassword, setOpenForgotPassword] = useState(false);
 
     useEffect(() => {
         if (openExternal !== undefined) {
@@ -83,18 +85,30 @@ const LoginForm = props => {
         setStartInVerifyMode(false);
     }
 
+    function handleOpenForgotPassword() {
+        setOpenDialog(false);
+        setOpenForgotPassword(true);
+    }
+
+    function handleCloseForgotPassword() {
+        setOpenForgotPassword(false);
+    }
+
     return (
-        <Dialog
-            PaperProps={{ className: classes.firstChild }}
-            fullScreen={fullScreen}
-            maxWidth='xs'
-            open={openDialog}
-            onClose={handleClose}
-            aria-labelledby="sign-in-dialog"
-            TransitionComponent={Transition}
-        >
-            <FormComponent handleClose={handleClose} startInVerifyMode={startInVerifyMode} />
-        </Dialog>
+        <React.Fragment>
+            <Dialog
+                PaperProps={{ className: classes.firstChild }}
+                fullScreen={fullScreen}
+                maxWidth='xs'
+                open={openDialog}
+                onClose={handleClose}
+                aria-labelledby="sign-in-dialog"
+                TransitionComponent={Transition}
+            >
+                <FormComponent handleClose={handleClose} startInVerifyMode={startInVerifyMode} onOpenForgotPassword={handleOpenForgotPassword} />
+            </Dialog>
+            {openForgotPassword && <ForgotPassword open={true} onClose={handleCloseForgotPassword} />}
+        </React.Fragment>
     );
 }
 

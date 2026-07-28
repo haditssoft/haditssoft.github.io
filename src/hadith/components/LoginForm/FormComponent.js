@@ -301,6 +301,18 @@ const FormComponent = props => {
       </DialogTitle>
       <EmailInput setEmailRef={setEmailRef} />
       <PasswordInput handleSubmitSignUp={handleSubmit} setPasswordRef={setPasswordRef} />
+      {mode === 'signin' && (
+        <div className={classes.toFlex}>
+          <Link
+            component="button"
+            variant="body2"
+            onClick={props.onOpenForgotPassword}
+            className={classes.toggleMode}
+          >
+            Forgot Password?
+          </Link>
+        </div>
+      )}
       {mode === 'signup' && (
         <PasswordConfirmInput handleSubmitSignUp={handleSubmit} setConfirmPasswordRef={setConfirmPasswordRef} />
       )}

@@ -37,6 +37,7 @@ import showSnackBar from '../fungsi/showSnackBar';
 import FontSettings from './FontSettings/FontSettings';
 import NavComponent from './NavComponent/NavComponent';
 import LoginForm from './LoginForm/LoginForm';
+import ForgotPassword from './ForgotPassword/ForgotPassword';
 import getNoteName from '../fungsi/getNoteName';
 import withWidth from '@material-ui/core/withWidth';
 import getKitabName from '../fungsi/getKitabName';
@@ -90,7 +91,8 @@ class PrimarySearchAppBar extends React.Component {
     mobileMoreAnchorEl: null,
     openFontDrawer: false,
     anchorAccount: null,
-    openLogin: false
+    openLogin: false,
+    openForgotPassword: false
   };
 
   shouldComponentUpdate(nextProps) {
@@ -107,6 +109,17 @@ class PrimarySearchAppBar extends React.Component {
 
   componentDidMount() {
     setDispatchTotalRow(this.propsForTotalRow);
+    // to wake heroku up, reduce waiting time for the next fetch
+    // fetch('https://rocky-bastion-06283.herokuapp.com/')
+    //   .then(() => {
+    //     return;
+    //   })
+    //   .catch(err => console.log('first fetch', err))
+    // fetch('https://hadithref.herokuapp.com/')
+    //   .then(() => {
+    //     return;
+    //   })
+    //   .catch(err => console.log('second fetch', err))
   }
 
   propsForTotalRow = () => {
@@ -172,6 +185,15 @@ class PrimarySearchAppBar extends React.Component {
 
   handleCloseLogin = () => {
     this.setState({ openLogin: false });
+  }
+
+  handleChangePassword = () => {
+    this.handleAccountMenuClose();
+    this.setState({ openForgotPassword: true });
+  }
+
+  handleCloseForgotPassword = () => {
+    this.setState({ openForgotPassword: false });
   }
 
   handleSignOut = () => {
@@ -322,12 +344,61 @@ class PrimarySearchAppBar extends React.Component {
     }
   }
 
+  // handleNoteAfterDiscardMenu = () => {
+  //   if (this.props.KitabName) {
+  //     if (this.props.openNote === false) {
+  //       const user = firebase.auth().currentUser;
+  //       if (user) {
+  //         const noteStore = getNoteName(this.props.KitabName);
+  //         // before, fetching note already handled by senderDataRequest.js in dispatchResult()
+  //         // now it's being handled here
+  //         user.getIdToken(/* forceRefresh */ false)
+  //           .then(idToken => {
+  //             fetch('https://gethadith.firebaseio.com/users/' + user.uid + '/' + noteStore + '/' + this.props.Nomer + '.json?timeout=10s&auth=' + idToken)
+  //               .then(res => {
+  //                 if (res.status !== 200) {
+  //                   this.props.onStoreNoteValue('');
+  //                   throw new Error('Failed to fetch note data.');
+  //                 }
+  //                 return res.json();
+  //               })
+  //               .then(noteContent => {
+  //                 if (noteContent) {
+  //                   if (typeof noteContent === 'string') {
+  //                     this.props.onStoreNoteValue(noteContent);
+  //                   } else {
+  //                     this.props.onStoreNoteValue(noteContent[0]);
+  //                   }
+  //                 } else {
+  //                   this.props.onStoreNoteValue('');
+  //                 }
+  //               })
+  //               .catch(err => console.log('fetch note', err));
+  //           }).catch(error => {
+  //             console.log('get idToken', error);
+  //           });
+  //       } else {
+  //         alert('Sign in diperlukan untuk melihat dan membuat catatan');
+  //         return;
+  //       }
+  //     }
+  //     this.props.onShowNote(!this.props.openNote);
+  //   }
+  // }
+
   handleNoteLocal = () => {
     if (this.state.mobileMoreAnchorEl !== null) {
       return this.setState({ mobileMoreAnchorEl: null }, () => this.handleNoteAfterDiscardMenuLocal());
     }
     this.handleNoteAfterDiscardMenuLocal();
   }
+
+  // handleNote = () => {
+  //   if (this.state.mobileMoreAnchorEl !== null) {
+  //     return this.setState({ mobileMoreAnchorEl: null }, () => this.handleNoteAfterDiscardMenu());
+  //   }
+  //   this.handleNoteAfterDiscardMenu();
+  // }
 
   handleBiography = () => {
     if (this.state.mobileMoreAnchorEl !== null) {
@@ -415,6 +486,7 @@ class PrimarySearchAppBar extends React.Component {
           <MenuItem onClick={this.handleSignOut}>Sign Out</MenuItem> :
           <MenuItem onClick={this.handleSignIn}>Sign In</MenuItem>
         }
+        <MenuItem onClick={this.handleChangePassword}>Change Password</MenuItem>
       </Menu>
     );
 
@@ -486,6 +558,7 @@ class PrimarySearchAppBar extends React.Component {
         {renderMobileMenu}
         {renderAccountMenu}
         {this.state.openLogin && <LoginForm openExternal={true} handleCloseExternal={this.handleCloseLogin} />}
+        {this.state.openForgotPassword && <ForgotPassword open={true} onClose={this.handleCloseForgotPassword} />}
       </div>
     );
   }
