@@ -207,14 +207,7 @@ class CustomizedInputBase extends React.Component {
     }
 
     if (keyWord.length) {
-      if (keyWord.includes("'")) {
-        // back then this line of code was put in the back-end
-        // which ran again for the next search and the next after it, and so, and so
-        // not so efficient while it can be done just once.
-        keywordForSearching = keyWord.replace(/'/g, "''");
-      } else {
-        keywordForSearching = keyWord;
-      }
+      keywordForSearching = keyWord;
       // transform into array of keywords
       // because the back-end needs an array
       // even if it just 1 keyword
