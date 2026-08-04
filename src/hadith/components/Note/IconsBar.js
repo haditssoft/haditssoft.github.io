@@ -38,12 +38,12 @@ const styles = theme => ({
 });
 
 const confName = [
-  'ShahihBukhari',
-  'ShahihMuslim',
-  'SunanTirmidzi',
-  'SunanAbuDaud',
-  'SunanNasai',
-  'SunanIbnuMajah',
+  'bukharinote',
+  'muslimnote',
+  'tirmidzinote',
+  'abudaudnote',
+  'nasainote',
+  'ibnumajahnote',
   'dariminote',
   'ahmadnote',
   'maliknote',
