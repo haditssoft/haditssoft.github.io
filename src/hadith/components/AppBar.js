@@ -18,6 +18,7 @@ import Hidden from '@material-ui/core/Hidden';
 
 import GoogleSearchInput from './items/GoogleSearchInput';
 import { switchServer, authFetch } from '../sender/api';
+import { resolveTranslation } from '../store/translationLanguages';
 import { connect } from 'react-redux';
 import {
   TOTALROW,
@@ -223,7 +224,7 @@ class PrimarySearchAppBar extends React.Component {
       this.setState({ mobileMoreAnchorEl: null });
     }
     if (this.props.arabic !== '') {
-      const targetText = this.props.arabic + '\r\n\r\n' + this.props.indo;
+      const targetText = this.props.arabic + '\r\n\r\n' + this.props.translation;
       // if (navigator.appVersion.indexOf('Win') !== -1) {
       //   navigator.clipboard.writeText(this.props.arabic + '\r\n\r\n' + this.props.indo);
       // } else if (navigator.appVersion.indexOf('Mac') !== -1 || navigator.appVersion.indexOf('Linux') !== -1) {
@@ -569,9 +570,10 @@ PrimarySearchAppBar.propTypes = {
 };
 
 const mapStateToProps = state => {
+  const translation = resolveTranslation(state.mainBooksData, state.translationLang.language);
   return {
     arabic: state.mainBooksData.Arabic,
-    indo: state.mainBooksData.Indonesia,
+    translation: translation.text,
     KitabName: state.mainBooksData.KitabName,
     Nomer: state.mainBooksData.Nomer,
     TotalRow: state.mainBooksData.TotalRow,

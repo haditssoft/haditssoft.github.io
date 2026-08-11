@@ -10,6 +10,7 @@ import { setKitabName } from '../components/Report/ReportForm';
 import { posInputRef } from '../components/items/PositionInput';
 import arrayOfKitabsName, { bookHaveNoChain } from '../store/arrayOfKitabsName';
 import { requestAiSummary } from './aiSummarySender';
+import { resolveTranslation } from '../store/translationLanguages';
 import {
     AMOUNTBUKHARI,
     AMOUNTMUSLIM,
@@ -147,10 +148,12 @@ const dispatchResult = ([mainData, dataType, positionForclassificationData]) => 
 
     // Trigger AI summary for the loaded hadith
     if (storeDispatch) {
+        const translation = resolveTranslation(mainData[0], localStorage.getItem('translation_lang'));
         requestAiSummary(
             storeDispatch,
             mainData[0].Arabic,
-            mainData[0].Indonesia
+            translation.text,
+            translation.lang
         );
     }
 

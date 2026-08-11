@@ -12,6 +12,7 @@ import AppSettings from './AppSettings';
 import { connect } from 'react-redux';
 import { RADIOMODECARICHECKED } from '../../store/action';
 import { switchServer, authFetch } from '../../sender/api';
+import { translationLanguages } from '../../store/translationLanguages';
 
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -140,6 +141,28 @@ const OpenSetting = props => {
               label='Cari semua kitab'
             />
           </ListItem>
+        </List>
+        <IconAndLabelLined
+          gutter={true}
+          icon={null}
+          label='Bahasa terjemahan'
+        />
+        <List component="div" disablePadding>
+          {translationLanguages.map((lang, i) => (
+            <ListItem
+              button
+              onClick={props.clicked(false)}
+              onKeyDown={props.clicked(false)}
+              className={classes.nested}
+              key={lang}
+            >
+              <RadioButton
+                group='translationlang'
+                value={lang}
+                label={lang}
+              />
+            </ListItem>
+          ))}
         </List>
       </List>
       <Divider />

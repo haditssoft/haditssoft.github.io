@@ -1,8 +1,17 @@
 import { authFetch, switchServer, getToken } from './api';
 
+const translationLangLabels = {
+    Indonesia: 'Indonesia',
+    English: 'Inggris',
+    Urdu: 'Urdu',
+    Bengali: 'Bengali'
+};
+
+export const getTranslationLangLabel = lang => translationLangLabels[lang] || 'Indonesia';
+
 var controller = null;
 
-export const requestAiSummary = function (dispatch, arabic, indonesia) {
+export const requestAiSummary = function (dispatch, arabic, translation, lang) {
     // 1. Cancel any previous in-flight request
     if (controller) {
         controller.abort();
@@ -18,7 +27,7 @@ export const requestAiSummary = function (dispatch, arabic, indonesia) {
     dispatch({ type: 'AI_SUMMARY_CLEAR' });
 
     // 4. No text to summarize
-    if (!arabic || !indonesia) return;
+    if (!arabic || !translation) return;
 
     // 5. Create new AbortController
     controller = new AbortController();
@@ -27,8 +36,9 @@ export const requestAiSummary = function (dispatch, arabic, indonesia) {
     // 6. Dispatch loading state
     dispatch({ type: 'AI_SUMMARY_START' });
 
-    // 7. Build prompt
-    var prompt = 'Teks Arab:\n' + arabic + '\n\nTeks Indonesia:\n' + indonesia;
+    // 7. Build prompt in the chosen translation language
+    var langLabel = getTranslationLangLabel(lang);
+    var prompt = 'Teks Arab:\n' + arabic + '\n\nTeks ' + langLabel + ':\n' + translation;
 
     // 8. Fire the request
     authFetch(switchServer + 'ai/ask', {
@@ -46,7 +56,7 @@ export const requestAiSummary = function (dispatch, arabic, indonesia) {
                 'Jika tidak mengetahui alasan suatu hukum dari dalil lain, katakan bahwa hadits ini tidak menjelaskan alasannya. Jangan membuat dugaan atau hikmah sendiri.\n' +
                 'Jangan menyebutkan sesuatu sebagai sebab (\'illah) kecuali memang ada dalil yang menjelaskannya.\n' +
                 'Jangan menganggap beberapa perkara memiliki alasan yang sama hanya karena disebutkan bersamaan atau berdampingan (kecuali ada dalil shahih/hasan), contoh dilarang bersuci dengan tulang dan kotoran hewan, masing-masing memiliki alasannya tersendiri yang harus disebutkan.\n' +
-                'Gunakan bahasa Indonesia yang ringkas, jelas, dan mudah dipahami.\n' +
+                'Gunakan bahasa ' + langLabel + ' yang ringkas, jelas, dan mudah dipahami.\n' +
                 'Jika terdapat perbedaan pendapat ulama yang penting, sebutkan secara singkat,\n' +
                 'Format output\n' +
                 'Ringkasan Hadits {nama_kitab: nomer_hadits}\n' +

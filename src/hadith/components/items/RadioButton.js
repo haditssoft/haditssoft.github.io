@@ -5,7 +5,7 @@ import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import { connect } from 'react-redux';
-import { RADIOCHECKED, RADIOMODECARICHECKED, SEARCHENDPOINTMODE } from '../../store/action';
+import { RADIOCHECKED, RADIOMODECARICHECKED, SEARCHENDPOINTMODE, SETTRANSLATIONLANG } from '../../store/action';
 import { switchServer, authFetch } from '../../sender/api';
 
 const styles = theme => ({
@@ -45,6 +45,12 @@ class RadioButtonsGroup extends React.Component {
           return true;
         }
       }
+    } else if (this.props.group === 'translationlang') {
+      if (this.props.radioTranslationLang !== nextProps.radioTranslationLang) {
+        if (this.props.value === this.props.radioTranslationLang || nextProps.value === nextProps.radioTranslationLang) {
+          return true;
+        }
+      }
     } else {
       if (this.props.radioModeCari !== nextProps.radioModeCari) {
         if (this.props.idx === this.props.radioModeCari || nextProps.idx === nextProps.radioModeCari) {
@@ -60,6 +66,8 @@ class RadioButtonsGroup extends React.Component {
       this.props.onRadioBookmarkChecked(idx);
     } else if (group === 'searchendpoint') {
       this.props.onSearchEndpointModeChecked(idx);
+    } else if (group === 'translationlang') {
+      this.props.onRadioTranslationLangChecked(idx);
     } else {
       this.props.onRadioModeCariChecked(idx);
       const token = localStorage.getItem('token');
@@ -80,7 +88,7 @@ class RadioButtonsGroup extends React.Component {
   };
 
   render() {
-    const { classes, radioBookmark, radioModeCari, radioSearchEndpoint, group, idx, label } = this.props;
+    const { classes, radioBookmark, radioModeCari, radioSearchEndpoint, radioTranslationLang, group, idx, value, label } = this.props;
 
     let classesStyle;
     let checkedState;
@@ -91,6 +99,9 @@ class RadioButtonsGroup extends React.Component {
     } else if (group === 'searchendpoint') {
       classesStyle = { root: classes.setPadding, label: classes.setLabel };
       checkedState = radioSearchEndpoint === idx;
+    } else if (group === 'translationlang') {
+      classesStyle = { root: classes.setPadding, label: classes.setLabel };
+      checkedState = radioTranslationLang === value;
     } else {
       classesStyle = { root: classes.setPadding, label: classes.setLabel };
       checkedState = radioModeCari === idx;
@@ -119,7 +130,8 @@ const mapStateToProps = state => {
   return {
     radioBookmark: state.controlRadioCheck.radioBookmark,
     radioModeCari: state.controlRadioCheck.radioModeCari,
-    radioSearchEndpoint: state.controlRadioCheck.radioSearchEndpoint
+    radioSearchEndpoint: state.controlRadioCheck.radioSearchEndpoint,
+    radioTranslationLang: state.translationLang.language
   };
 };
 
@@ -127,7 +139,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onRadioBookmarkChecked: (idx) => dispatch({ type: RADIOCHECKED, checked: idx }),
     onRadioModeCariChecked: (idx) => dispatch({ type: RADIOMODECARICHECKED, checked: idx }),
-    onSearchEndpointModeChecked: (idx) => dispatch({ type: SEARCHENDPOINTMODE, checked: idx })
+    onSearchEndpointModeChecked: (idx) => dispatch({ type: SEARCHENDPOINTMODE, checked: idx }),
+    onRadioTranslationLangChecked: (language) => dispatch({ type: SETTRANSLATIONLANG, language: language })
   };
 };
 

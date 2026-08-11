@@ -23,6 +23,7 @@ import {
 } from '../../store/action';
 import { keyWords, columnName } from '../../store/searchKeywords';
 import { currentSizeId } from '../../store/currentScreenSize';
+import { resolveTranslation } from '../../store/translationLanguages';
 import { expHandlePrevNextHadits } from '../NavComponent/NavComponent';
 // import { expDispatchMainData } from '../../sender/senderDataRequest';
 import { switchServer, authFetch } from '../../sender/api';
@@ -147,7 +148,9 @@ class TextHadits extends React.Component {
         if (this.props.theme.palette.type !== nextProps.theme.palette.type) {
             return true;
         }
-        if (nextProps.indo !== this.props.indo) {
+        if (nextProps.translation !== this.props.translation) {
+            return true;
+        } else if (nextProps.translationLang !== this.props.translationLang) {
             return true;
         } else if (nextProps.arabicFont[0] !== this.props.arabicFont[0]) {
             return true;
@@ -283,14 +286,14 @@ class TextHadits extends React.Component {
         if (this.props.arabic) {
             // COLORING TEXT INSIDE BRACES
             coloredArabic = replaceBraces(this.props.arabic, whatDataIsShown, 'Arabic Gundul');
-            coloredIndo = replaceBraces(this.props.indo, whatDataIsShown, 'Indonesia');
+            coloredIndo = replaceBraces(this.props.translation, whatDataIsShown, this.props.translationLang);
 
             // coloring found text when showing search result
             if (whatDataIsShown === SEARCHDATA && keyWords.length) {
-                if (columnName === 'Indonesia') {
-                    coloredIndo = coloringFoundText(coloredIndo, keyWords, columnName);
-                } else {
+                if (columnName === 'Arabic' || columnName === 'Gundul') {
                     coloredArabic = coloringFoundText(coloredArabic, keyWords, columnName);
+                } else {
+                    coloredIndo = coloringFoundText(coloredIndo, keyWords, columnName);
                 }
             }
 
@@ -327,9 +330,11 @@ class TextHadits extends React.Component {
 };
 
 const mapStateToProps = state => {
+    const translation = resolveTranslation(state.mainBooksData, state.translationLang.language);
     return {
         arabic: state.mainBooksData.Arabic,
-        indo: state.mainBooksData.Indonesia,
+        translation: translation.text,
+        translationLang: translation.lang,
         showInput: state.otherNumberData.showInput,
         arabicFont: state.fontSetting.arabicFont,
         indoFont: state.fontSetting.indoFont,

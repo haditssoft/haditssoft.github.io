@@ -59,6 +59,7 @@ import tabDialogReducer from './hadith/store/reducer/DialogForTab/tabDialog';
 import dialogProfileRawiReducer from './hadith/store/reducer/Sanad/dialogProfileRawi';
 import lightDarkSwitchReducer from './hadith/store/reducer/Theme/lightDarkSwitch';
 import aiSummaryReducer from './hadith/store/reducer/aiSummary';
+import translationLangReducer from './hadith/store/reducer/translationLang';
 // import swipeableIndexReducer from './hadith/store/reducer/SwipeableIndex/swipeableIndex';
 
 const rootReducer = combineReducers({
@@ -112,7 +113,8 @@ const rootReducer = combineReducers({
     tabDialog: tabDialogReducer,
     dialogProfileRawi: dialogProfileRawiReducer,
     lightDarkSwitch: lightDarkSwitchReducer,
-    aiSummary: aiSummaryReducer
+    aiSummary: aiSummaryReducer,
+    translationLang: translationLangReducer
     // swipeableIndex: swipeableIndexReducer
 });
 
