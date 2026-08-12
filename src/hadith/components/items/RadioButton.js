@@ -67,7 +67,7 @@ class RadioButtonsGroup extends React.Component {
     } else if (group === 'searchendpoint') {
       this.props.onSearchEndpointModeChecked(idx);
     } else if (group === 'translationlang') {
-      this.props.onRadioTranslationLangChecked(idx);
+      this.props.onRadioTranslationLangChecked(this.props.value);
     } else {
       this.props.onRadioModeCariChecked(idx);
       const token = localStorage.getItem('token');

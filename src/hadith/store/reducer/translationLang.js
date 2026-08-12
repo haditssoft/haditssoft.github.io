@@ -10,11 +10,12 @@ const reducer = (state = initialState, action) => {
         case SETTRANSLATIONLANG:
             if (isValidTranslationLang(action.language)) {
                 localStorage.setItem('translation_lang', action.language);
+                return {
+                    ...state,
+                    language: action.language
+                };
             }
-            return {
-                ...state,
-                language: action.language
-            };
+            return state;
         default:
             return state;
     }
