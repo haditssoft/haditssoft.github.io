@@ -2,6 +2,7 @@ import React from 'react';
 // import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import { withTranslation } from 'react-i18next';
 
 
 const useStyles = makeStyles(theme => ({
@@ -32,7 +33,7 @@ const PasswordInput = props => {
             onChange={handleChange}
             onKeyPress={handleEnterKey}
             id="outlined-password-input"
-            label="Password"
+            label={props.t('loginForm.password')}
             classes={{ root: classes.textField }}
             type="password"
             name="password"
@@ -43,4 +44,4 @@ const PasswordInput = props => {
     );
 }
 
-export default PasswordInput;
+export default withTranslation()(PasswordInput);

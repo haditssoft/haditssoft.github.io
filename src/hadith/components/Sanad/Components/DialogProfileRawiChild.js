@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import Button from '@material-ui/core/Button';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -29,11 +30,11 @@ const DialogProfileRawiChild = props => {
             </DialogContent>
             <DialogActions>
                 <Button onClick={props.tirggerClose} color="primary" autoFocus>
-                    Close
+                    {props.t('sanad.close')}
                 </Button>
             </DialogActions>
         </>
     );
 }
 
-export default DialogProfileRawiChild;
+export default withTranslation()(DialogProfileRawiChild);

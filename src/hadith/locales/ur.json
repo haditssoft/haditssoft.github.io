@@ -1,0 +1,154 @@
+{
+  "appBar": {
+    "font": "فونٹ",
+    "copy": "کاپی",
+    "note": "نوٹ",
+    "bio": "سوانح",
+    "info": "معلومات",
+    "account": "اکاؤنٹ",
+    "signOut": "سائن آؤٹ",
+    "signIn": "سائن ان",
+    "changePassword": "پاس ورڈ تبدیل کریں",
+    "fontSettings": "فونٹ کی ترتیبات",
+    "copyTooltip": "عربی اور ترجمہ کاپی کریں",
+    "notesTooltip": "نوٹس",
+    "biographyTooltip": "سوانح",
+    "infoTooltip": "معلومات",
+    "accountTooltip": "صارف اکاؤنٹ",
+    "textCopied": "متن کامیابی سے کاپی ہو گیا",
+    "noTextToCopy": "کاپی کرنے کے لیے کوئی متن نہیں",
+    "signInRequiredNote": "نوٹس دیکھنے اور بنانے کے لیے سائن ان ضروری ہے"
+  },
+  "settings": {
+    "searchMode": "تلاش کا طریقہ",
+    "singleKeyword": "واحد کلیدی لفظ",
+    "multiKeyword": "متعدد کلیدی الفاظ",
+    "searchPerBook": "کتاب کے مطابق تلاش کریں",
+    "searchAllBooks": "تمام کتابیں تلاش کریں",
+    "translationLanguage": "ترجمے کی زبان"
+  },
+  "appSettings": {
+    "settings": "ترتیبات",
+    "darkMode": "ڈارک موڈ"
+  },
+  "dialogTab": {
+    "bookList": "کتابوں کی فہرست",
+    "byPosition": "مقام کے مطابق",
+    "thematic": "وضعی",
+    "bookmarks": "بک مارکس",
+    "searchResults": "تلاش کے نتائج",
+    "hadithList": "احادیث کی فہرست",
+    "sanad": "سند",
+    "similarHadith": "مماثل حدیث",
+    "searchNarrator": "راوی تلاش کریں",
+    "report": "رپورٹ",
+    "close": "بند کریں"
+  },
+  "bookmark": {
+    "bookmarked": "حدیث کامیابی سے بک مارک ہو گئی",
+    "alreadyExists": "پہلے سے بک مارک میں ہے",
+    "signInRequired": "بک مارک بنانے اور دیکھنے کے لیے سائن ان ضروری ہے",
+    "deleting": "بک مارک حذف ہو رہی ہے...",
+    "showBookmark": "بک مارک دکھائیں",
+    "totalBookmarks": "کل بک مارک(s): {{count}}",
+    "newTitle": "نیا عنوان بنائیں",
+    "typeTitle": "عنوان لکھیں",
+    "availableTitle": "دستیاب عنوان",
+    "chooseTitle": "عنوان منتخب کریں",
+    "save": "محفوظ کریں",
+    "delete": "حذف کریں",
+    "total": "کل: {{count}}"
+  },
+  "biography": {
+    "title": "سوانح",
+    "imam": " امام {{name}}",
+    "close": "بند کریں"
+  },
+  "info": {
+    "title": "معلومات",
+    "close": "بند کریں",
+    "preface": "دیباجہ",
+    "definition": "حدیث کے علم میں تعریف",
+    "narrationWay": "روایت کے طریقے کے مطابق",
+    "toWhom": "منسوب شخص کے لحاظ سے",
+    "strongWeak": " مضبوطی اور کمزوری کے لحاظ سے",
+    "invalidChain": "سناد ٹوٹنے کی وجہ سے رد",
+    "suspicionFlaw": "عیب کے شک کی وجہ سے رد",
+    "jarhTadil": "جرح و تعدیل کے اصطلاحات",
+    "standardBook": "معیاری کتاب نمبر کی ترتیب"
+  },
+  "rawiSearch": {
+    "searchQuery": "تلاش کا سوال",
+    "name": "نام",
+    "kunyah": "کنیة",
+    "kalangan": "owaif",
+    "level": "درجہ",
+    "search": "تلاش کریں",
+    "result": "نتیجہ: {{count}}"
+  },
+  "searchResult": {
+    "all": "تمام"
+  },
+  "report": {
+    "report": "رپورٹ",
+    "charsRemaining": "باقی حروف: ",
+    "keepTyping": "لکھتے رہیں...",
+    "removeChars": "براہ کرم حروف ہٹائیں",
+    "submit": "جمع کرائیں"
+  },
+  "loginForm": {
+    "signIn": "سائن ان",
+    "signUp": "سائن اپ",
+    "signInTitle": "سائن ان",
+    "signUpTitle": "سائن اپ",
+    "preserveData": "اپنا ڈیٹا محفوظ کرنے کے لیے",
+    "email": "ای میل",
+    "password": "پاس ورڈ",
+    "confirmPassword": "پاس ورڈ کی تصدیق",
+    "forgotPassword": "پاس ورڈ بھول گئے؟",
+    "noAccount": "اکاؤنٹ نہیں ہے؟ سائن اپ کریں",
+    "hasAccount": "پہلے سے اکاؤنٹ ہے؟ سائن ان کریں",
+    "skip": "چھوڑیں",
+    "passwordReset": "پاس ورڈ ری سیٹ",
+    "successful": "کامیاب",
+    "passwordResetMsg": "آپ کا پاس ورڈ کامیابی سے ری سیٹ ہو گیا ہے۔ آب اپنے نئے پاس ورڈ سے سائن ان کر سکتے ہیں۔",
+    "login": "لاگ ان"
+  },
+  "sanad": {
+    "level": "درجہ",
+    "color": "رنگ",
+    "description": "تفصیل",
+    "counter": "{{current}} میں سے {{total}}",
+    "close": "بند کریں"
+  },
+  "aiSummary": {
+    "title": "AI خلاصہ",
+    "error": "خلاصہ لوڈ کرنے میں ناکامی"
+  },
+  "keyboard": {
+    "shift": "شِفٹ",
+    "space": "اسپیس",
+    "delete": "حذف"
+  },
+  "fontSettings": {
+    "arabicFont": "عربی فونٹ",
+    "indoFont": "اندونیزیائی فونٹ",
+    "name": "نام",
+    "type": "قسم",
+    "size": "سائز"
+  },
+  "expansionPanel": {
+    "bukhari": "بخاری",
+    "muslim": "مسلم",
+    "tirmidzi": "ترمذی",
+    "abuDaud": "ابوداؤد",
+    "nasai": "نسائی",
+    "ibnuMajah": "ابن ماجہ",
+    "darimi": "دارمی",
+    "ahmad": "احمد",
+    "malik": "مالک"
+  },
+  "similar": {
+    "total": "کل: {{count}}"
+  }
+}

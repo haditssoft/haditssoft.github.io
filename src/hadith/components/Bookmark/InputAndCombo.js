@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, withTheme } from '@material-ui/core/styles';
+import { withTranslation } from 'react-i18next';
 // import Divider from '@material-ui/core/Divider';
 import MenuItem from '@material-ui/core/MenuItem';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -187,7 +188,7 @@ class InputAndCombo extends React.Component {
           const newListOfTitle = [...this.props.listTitle, title];
           this.props.onStoreTitleList(newListOfTitle);
         }
-        return this.saveSucceeded('Hadits berhasil dibookmark', 'success');
+        return this.saveSucceeded(this.props.t('bookmark.bookmarked'), 'success');
       })
       .catch(err => console.log('patch bookmark', err));
   }
@@ -211,7 +212,7 @@ class InputAndCombo extends React.Component {
             const lastPost = arrayData.length;
             return this.storeIt(token, title, booksName, 'POST', lastPost, number);
           } else {
-            return this.saveSucceeded('Telah ada di bookmark', 'error');
+            return this.saveSucceeded(this.props.t('bookmark.alreadyExists'), 'error');
           }
         } else {
           return this.storeIt(token, title, booksName, 'POST', 0, number);
@@ -249,7 +250,7 @@ class InputAndCombo extends React.Component {
               })
               .catch(error => console.log('get bookmark', error.message));
           } else {
-            alert('Sign in diperlukan untuk membuat dan melihat bookmark');
+            alert(this.props.t('bookmark.signInRequired'));
           }
         }
         break;
@@ -278,7 +279,7 @@ class InputAndCombo extends React.Component {
 
   handleDeleteClicked = () => {
     const existTitle = this.props.existTitle;
-    this.saveSucceeded('Menghapus bookmark...', 'warning', existTitle);
+    this.saveSucceeded(this.props.t('bookmark.deleting'), 'warning', existTitle);
   }
 
   handleChanged = (panel, idx) => (event, expanded) => {
@@ -352,12 +353,12 @@ class InputAndCombo extends React.Component {
         <div className={classes.sectionThree}>
           <InputJudulBookmark
             id='bookmarkTitleForLoad'
-            watermark='Tampilkan bookmark'
+            watermark={this.props.t('bookmark.showBookmark')}
             select={true} // render as Select component
             require={false}
             child={titleBookmark}
             text={titleForLoad}
-            helper={'Total bookmark(s): ' + listTitle.length}
+            helper={this.props.t('bookmark.totalBookmarks', { count: listTitle.length })}
             collapsePanelHandler={this.handleForceExpandCollapse} />
         </div>
         {/* <Divider variant="middle" /> */}
@@ -373,12 +374,12 @@ class InputAndCombo extends React.Component {
                 <RadioButton
                   group='bookmark'
                   idx={0}
-                  label='Buat judul baru' />
+                  label={this.props.t('bookmark.newTitle')} />
               </ExpansionPanelSummary>
               <ExpansionPanelDetails classes={{ root: classes.detailsPadd }}>
                 <InputJudulBookmark
                   id='bookmarkNewTitle'
-                  watermark='Ketik judul'
+                  watermark={this.props.t('bookmark.typeTitle')}
                   select={false}
                   require={radioBookmark === 0 ? true : false}
                   child={null}
@@ -400,12 +401,12 @@ class InputAndCombo extends React.Component {
                 <RadioButton
                   group='bookmark'
                   idx={1}
-                  label='Judul tersedia' />
+                  label={this.props.t('bookmark.availableTitle')} />
               </ExpansionPanelSummary>
               <ExpansionPanelDetails classes={{ root: classes.detailsPadd }}>
                 <InputJudulBookmark
                   id='bookmarkExistTitle'
-                  watermark='Pilih judul'
+                  watermark={this.props.t('bookmark.chooseTitle')}
                   select={true} // render as Select component
                   require={radioBookmark === 1 ? true : false}
                   child={titleBookmark}
@@ -467,4 +468,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withTheme(withRouter(InputAndCombo))));
+export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withTheme(withRouter(InputAndCombo)))));

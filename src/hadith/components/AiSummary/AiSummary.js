@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import LinearProgress from '@material-ui/core/LinearProgress';
@@ -187,7 +188,7 @@ var AiSummary = function (props) {
             {props.aiSummary && !props.aiSummaryLoading && (
                 <div className={classes.summaryContainer}>
                     <Typography variant='subtitle2' className={`${classes.summaryLabel} ${classes.bodyText}`}>
-                        Ringkasan AI
+                        {props.t('aiSummary.title')}
                     </Typography>
                     <div className={classes.markdownBody}>
                         <ReactMarkdown plugins={[remarkGfm]} renderers={renderers}>
@@ -200,7 +201,7 @@ var AiSummary = function (props) {
             {props.aiSummaryError && !props.aiSummaryLoading && (
                 <div className={classes.summaryContainer}>
                     <Typography variant='body2' className={`${classes.errorText} ${classes.bodyText}`}>
-                        Gagal memuat ringkasan
+                        {props.t('aiSummary.error')}
                     </Typography>
                 </div>
             )}
@@ -216,4 +217,4 @@ var mapStateToProps = function (state) {
     };
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(AiSummary));
+export default withTranslation()(connect(mapStateToProps)(withStyles(styles)(AiSummary)));

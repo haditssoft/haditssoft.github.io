@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import { withTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(theme => ({
     textField: {
@@ -13,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function ReportInput(props) {
+export default withTranslation()(function ReportInput(props) {
     const classes = useStyles();
     const [values, setValues] = React.useState('');
 
@@ -28,10 +29,10 @@ export default function ReportInput(props) {
             if (currentCharsLength >= 0) {
                 props.setReject(false);
             } else {
-                props.setReject('Please remove some characters');
+                props.setReject(props.t('report.removeChars'));
             }
         } else {
-            props.setReject('Keep typing...');
+            props.setReject(props.t('report.keepTyping'));
         }
     };
 
@@ -50,11 +51,11 @@ export default function ReportInput(props) {
     return (
         <TextField
             id='report-input'
-            label='Report'
+            label={props.t('report.report')}
             multiline
             rows='4'
             variant='outlined'
-            helperText={(props.reject && typeof props.reject === 'string') ? props.reject : ('Chars remains: ' + (255 - values.length))}
+            helperText={(props.reject && typeof props.reject === 'string') ? props.reject : (props.t('report.charsRemaining') + (255 - values.length))}
             value={values}
             onChange={handleChange}
             onFocus={handleFocus}
@@ -64,4 +65,4 @@ export default function ReportInput(props) {
             FormHelperTextProps={{ error: props.reject ? true : false }}
         />
     );
-}
+});

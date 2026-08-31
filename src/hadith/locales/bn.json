@@ -1,0 +1,154 @@
+{
+  "appBar": {
+    "font": "ফন্ট",
+    "copy": "কপি",
+    "note": "নোট",
+    "bio": "জীবনী",
+    "info": "তথ্য",
+    "account": "অ্যাকাউন্ট",
+    "signOut": "সাইন আউট",
+    "signIn": "সাইন ইন",
+    "changePassword": "পাসওয়ার্ড পরিবর্তন করুন",
+    "fontSettings": "ফন্ট সেটিংস",
+    "copyTooltip": "আরবি ও অনুবাদ কপি করুন",
+    "notesTooltip": "নোটসমূহ",
+    "biographyTooltip": "জীবনী",
+    "infoTooltip": "তথ্য",
+    "accountTooltip": "ব্যবহারকারীর অ্যাকাউন্ট",
+    "textCopied": "পাঠ্য সফলভাবে কপি হয়েছে",
+    "noTextToCopy": "কপি করার জন্য কোনো পাঠ্য নেই",
+    "signInRequiredNote": "নোট দেখতে ও তৈরি করতে সাইন ইন প্রয়োজন"
+  },
+  "settings": {
+    "searchMode": "অনুসন্ধান মোড",
+    "singleKeyword": "একক কীওয়ার্ড",
+    "multiKeyword": "একাধিক কীওয়ার্ড",
+    "searchPerBook": "বই অনুযায়ী অনুসন্ধান",
+    "searchAllBooks": "সব বই অনুসন্ধান",
+    "translationLanguage": "অনুবাদ ভাষা"
+  },
+  "appSettings": {
+    "settings": "সেটিংস",
+    "darkMode": "ডার্ক মোড"
+  },
+  "dialogTab": {
+    "bookList": "বইয়ের তালিকা",
+    "byPosition": "অবস্থান অনুযায়ী",
+    "thematic": "থিমেটিক",
+    "bookmarks": "বুকমার্ক",
+    "searchResults": "অনুসন্ধানের ফলাফল",
+    "hadithList": "হাদিসের তালিকা",
+    "sanad": "সনদ",
+    "similarHadith": "অনুরূপ হাদিস",
+    "searchNarrator": "বর্ণনাকারী খুঁজুন",
+    "report": "রিপোর্ট",
+    "close": "বন্ধ করুন"
+  },
+  "bookmark": {
+    "bookmarked": "হাদিস সফলভাবে বুকমার্ক হয়েছে",
+    "alreadyExists": "ইতিমধ্যে বুকমার্কে আছে",
+    "signInRequired": "বুকমার্ক তৈরি ও দেখতে সাইন ইন প্রয়োজন",
+    "deleting": "বুকমার্ক মুছে ফেলা হচ্ছে...",
+    "showBookmark": "বুকমার্ক দেখান",
+    "totalBookmarks": "মোট বুকমার্ক: {{count}}",
+    "newTitle": "নতুন শিরোনাম তৈরি করুন",
+    "typeTitle": "শিরোনাম লিখুন",
+    "availableTitle": "উপলব্ধ শিরোনাম",
+    "chooseTitle": "শিরোনাম নির্বাচন করুন",
+    "save": "সংরক্ষণ",
+    "delete": "মুছুন",
+    "total": "মোট: {{count}}"
+  },
+  "biography": {
+    "title": "জীবনী",
+    "imam": " ইমাম {{name}}",
+    "close": "বন্ধ করুন"
+  },
+  "info": {
+    "title": "তথ্য",
+    "close": "বন্ধ করুন",
+    "preface": "ভূমিকা",
+    "definition": "হাদিস বিজ্ঞানে সংজ্ঞা",
+    "narrationWay": "বর্ণনার পথ অনুযায়ী",
+    "toWhom": "যার নিকট থেকে বর্ণনা করা হয়েছে",
+    "strongWeak": "শক্তি ও দুর্বলতার দিক থেকে",
+    "invalidChain": "সনদ ভেঙে পড়ার কারণে প্রত্যাখ্যাত",
+    "suspicionFlaw": "ত্রুটির সন্দেহে প্রত্যাখ্যাত",
+    "jarhTadil": "জারহ ও তা'dিলের পরিভাষা",
+    "standardBook": "মানক বই নম্বর সমন্বয়"
+  },
+  "rawiSearch": {
+    "searchQuery": "অনুসন্ধান প্রশ্ন",
+    "name": "নাম",
+    "kunyah": "কুনিয়া",
+    "kalangan": "শ্রেণী",
+    "level": "স্তর",
+    "search": "অনুসন্ধান",
+    "result": "ফলাফল: {{count}}"
+  },
+  "searchResult": {
+    "all": "সব"
+  },
+  "report": {
+    "report": "রিপোর্ট",
+    "charsRemaining": "অবশিষ্ট অক্ষর: ",
+    "keepTyping": "টাইপ করতে থাকুন...",
+    "removeChars": "অনুগ্রহ করে কিছু অক্ষর সরান",
+    "submit": "জমা দিন"
+  },
+  "loginForm": {
+    "signIn": "সাইন ইন",
+    "signUp": "সাইন আপ",
+    "signInTitle": "সাইন ইন",
+    "signUpTitle": "সাইন আপ",
+    "preserveData": "আপনার ডেটা সংরক্ষণ করতে",
+    "email": "ইমেইল",
+    "password": "পাসওয়ার্ড",
+    "confirmPassword": "পাসওয়ার্ড নিশ্চিত করুন",
+    "forgotPassword": "পাসওয়ার্ড ভুলে গেছেন?",
+    "noAccount": "অ্যাকাউন্ট নেই? সাইন আপ করুন",
+    "hasAccount": "ইতিমধ্যে অ্যাকাউন্ট আছে? সাইন ইন করুন",
+    "skip": "এড়িয়ে যান",
+    "passwordReset": "পাসওয়ার্ড রিসেট",
+    "successful": "সফল",
+    "passwordResetMsg": "আপনার পাসওয়ার্ড সফলভাবে রিসেট হয়েছে। এখন আপনি নতুন পাসওয়ার্ড দিয়ে সাইন ইন করতে পারেন।",
+    "login": "লগইন"
+  },
+  "sanad": {
+    "level": "স্তর",
+    "color": "রঙ",
+    "description": "বিবরণ",
+    "counter": "{{total}} এর মধ্যে {{current}}",
+    "close": "বন্ধ করুন"
+  },
+  "aiSummary": {
+    "title": "AI সারসংক্ষেপ",
+    "error": "সারসংক্ষেপ লোড করতে ব্যর্থ"
+  },
+  "keyboard": {
+    "shift": "শিফট",
+    "space": "স্পেস",
+    "delete": "মুছুন"
+  },
+  "fontSettings": {
+    "arabicFont": "আরবি ফন্ট",
+    "indoFont": "ইন্দোনেশীয় ফন্ট",
+    "name": "নাম",
+    "type": "ধরন",
+    "size": "আকার"
+  },
+  "expansionPanel": {
+    "bukhari": "বুখারী",
+    "muslim": "মুসলিম",
+    "tirmidzi": "তিরমিযি",
+    "abuDaud": "আবু দাউদ",
+    "nasai": "নাসায়ি",
+    "ibnuMajah": "ইবনু মাজাহ",
+    "darimi": "দারিমি",
+    "ahmad": "আহমাদ",
+    "malik": "মালিক"
+  },
+  "similar": {
+    "total": "মোট: {{count}}"
+  }
+}

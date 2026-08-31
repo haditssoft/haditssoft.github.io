@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { withTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(theme => ({
     wrapper: {
@@ -37,11 +38,11 @@ const SubmitButton = props => {
                 // fullWidth
                 disabled={props.loading} //(props.captchaValue ? false : true) && 
             >
-                Submit
+                {props.t('report.submit')}
             </Button>
             {props.loading && <CircularProgress size={24} className={classes.buttonProgress} />}
         </div>
     );
 }
 
-export default SubmitButton;
+export default withTranslation()(SubmitButton);

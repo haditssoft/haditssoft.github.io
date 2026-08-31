@@ -1,0 +1,154 @@
+{
+  "appBar": {
+    "font": "Font",
+    "copy": "Copy",
+    "note": "Note",
+    "bio": "Biography",
+    "info": "Info",
+    "account": "Account",
+    "signOut": "Sign Out",
+    "signIn": "Sign In",
+    "changePassword": "Change Password",
+    "fontSettings": "Font Settings",
+    "copyTooltip": "Copy arabic & translation",
+    "notesTooltip": "Notes",
+    "biographyTooltip": "Biography",
+    "infoTooltip": "Info",
+    "accountTooltip": "User Account",
+    "textCopied": "Text copied successfully",
+    "noTextToCopy": "No text to copy",
+    "signInRequiredNote": "Sign in is required to view and create notes"
+  },
+  "settings": {
+    "searchMode": "Search mode",
+    "singleKeyword": "Single keyword",
+    "multiKeyword": "Multiple keywords",
+    "searchPerBook": "Search per book",
+    "searchAllBooks": "Search all books",
+    "translationLanguage": "Translation language"
+  },
+  "appSettings": {
+    "settings": "Settings",
+    "darkMode": "Dark mode"
+  },
+  "dialogTab": {
+    "bookList": "Book list",
+    "byPosition": "By Position",
+    "thematic": "Thematic",
+    "bookmarks": "Bookmarks",
+    "searchResults": "Search results",
+    "hadithList": "Hadith list",
+    "sanad": "Sanad",
+    "similarHadith": "Similar hadith",
+    "searchNarrator": "Search narrator",
+    "report": "Report",
+    "close": "Close"
+  },
+  "bookmark": {
+    "bookmarked": "Hadith bookmarked successfully",
+    "alreadyExists": "Already in bookmarks",
+    "signInRequired": "Sign in is required to create and view bookmarks",
+    "deleting": "Deleting bookmark...",
+    "showBookmark": "Show bookmark",
+    "totalBookmarks": "Total bookmark(s): {{count}}",
+    "newTitle": "Create new title",
+    "typeTitle": "Type title",
+    "availableTitle": "Available title",
+    "chooseTitle": "Choose title",
+    "save": "Save",
+    "delete": "Delete",
+    "total": "Total: {{count}}"
+  },
+  "biography": {
+    "title": "Biography",
+    "imam": " Imam {{name}}",
+    "close": "Close"
+  },
+  "info": {
+    "title": "Information",
+    "close": "Close",
+    "preface": "Preface",
+    "definition": "Definition in hadith terminology",
+    "narrationWay": "According to the way of narration",
+    "toWhom": "Reviewed by the person attributed to",
+    "strongWeak": "From the perspective of strength and weakness",
+    "invalidChain": "Rejected due to broken chain",
+    "suspicionFlaw": "Rejected due to suspected defect",
+    "jarhTadil": "Terminology in jarh wa ta'dil",
+    "standardBook": "Standard book number adjustment"
+  },
+  "rawiSearch": {
+    "searchQuery": "Search Query",
+    "name": "Name",
+    "kunyah": "Kunyah",
+    "kalangan": "Class",
+    "level": "Level",
+    "search": "Search",
+    "result": "Result: {{count}}"
+  },
+  "searchResult": {
+    "all": "All"
+  },
+  "report": {
+    "report": "Report",
+    "charsRemaining": "Chars remaining: ",
+    "keepTyping": "Keep typing...",
+    "removeChars": "Please remove some characters",
+    "submit": "Submit"
+  },
+  "loginForm": {
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "signInTitle": "Sign in",
+    "signUpTitle": "Sign up",
+    "preserveData": "to preserve your data",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don't have an account? Sign up",
+    "hasAccount": "Already have an account? Sign in",
+    "skip": "Skip",
+    "passwordReset": "Password Reset",
+    "successful": "Successful",
+    "passwordResetMsg": "Your password has been reset successfully. You can now sign in with your new password.",
+    "login": "Login"
+  },
+  "sanad": {
+    "level": "Level",
+    "color": "Color",
+    "description": "Description",
+    "counter": "{{current}} of {{total}}",
+    "close": "Close"
+  },
+  "aiSummary": {
+    "title": "AI Summary",
+    "error": "Failed to load summary"
+  },
+  "keyboard": {
+    "shift": "Shift",
+    "space": "Space",
+    "delete": "Delete"
+  },
+  "fontSettings": {
+    "arabicFont": "Arabic Font",
+    "indoFont": "Indonesia Font",
+    "name": "Name",
+    "type": "Type",
+    "size": "Size"
+  },
+  "expansionPanel": {
+    "bukhari": "Bukhari",
+    "muslim": "Muslim",
+    "tirmidzi": "Tirmidzi",
+    "abuDaud": "Abu Daud",
+    "nasai": "Nasa'i",
+    "ibnuMajah": "Ibnu Majah",
+    "darimi": "Darimi",
+    "ahmad": "Ahmad",
+    "malik": "Malik"
+  },
+  "similar": {
+    "total": "Total: {{count}}"
+  }
+}

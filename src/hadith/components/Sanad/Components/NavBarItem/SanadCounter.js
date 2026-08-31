@@ -1,6 +1,7 @@
 import React from 'react';
 import { withTheme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import { withTranslation } from 'react-i18next';
 
 import { connect } from 'react-redux';
 
@@ -23,7 +24,7 @@ class SanadCounter extends React.Component {
 
         return (
             <Typography variant='caption' display='inline' color='initial' noWrap>
-                {sanadPos + 1} of {narrators.length}
+                {this.props.t('sanad.counter', { current: sanadPos + 1, total: narrators.length })}
             </Typography>
         );
     };
@@ -36,4 +37,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(withTheme(SanadCounter));
+export default withTranslation()(connect(mapStateToProps)(withTheme(SanadCounter)));

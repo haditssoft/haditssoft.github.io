@@ -15,6 +15,7 @@ import { switchServer, authFetch } from '../../sender/api';
 import { translationLanguages } from '../../store/translationLanguages';
 
 import { useHistory, useLocation } from "react-router-dom";
+import { withTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(theme => ({
   list: {
@@ -95,7 +96,7 @@ const OpenSetting = props => {
         <IconAndLabelLined
           gutter={false}
           icon={<RadioButtonCheckedIcon />}
-          label='Mode cari'
+          label={props.t('settings.searchMode')}
         />
         <List component="div" disablePadding>
           <ListItem
@@ -107,14 +108,14 @@ const OpenSetting = props => {
             <RadioButton
               group='modecari'
               idx={0}
-              label='Satu kata kunci'
+              label={props.t('settings.singleKeyword')}
             />
           </ListItem>
         </List>
         <IconAndLabelLined
           gutter={true}
           icon={null}
-          label='Multi kata kunci'
+          label={props.t('settings.multiKeyword')}
         />
         <List component="div" disablePadding>
           <ListItem
@@ -126,7 +127,7 @@ const OpenSetting = props => {
             <RadioButton
               group='searchendpoint'
               idx={0}
-              label='Cari per kitab'
+              label={props.t('settings.searchPerBook')}
             />
           </ListItem>
           <ListItem
@@ -138,14 +139,14 @@ const OpenSetting = props => {
             <RadioButton
               group='searchendpoint'
               idx={1}
-              label='Cari semua kitab'
+              label={props.t('settings.searchAllBooks')}
             />
           </ListItem>
         </List>
         <IconAndLabelLined
           gutter={true}
           icon={null}
-          label='Bahasa terjemahan'
+          label={props.t('settings.translationLanguage')}
         />
         <List component="div" disablePadding>
           {translationLanguages.map((lang, i) => (
@@ -177,4 +178,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(OpenSetting);
+export default withTranslation()(connect(null, mapDispatchToProps)(OpenSetting));

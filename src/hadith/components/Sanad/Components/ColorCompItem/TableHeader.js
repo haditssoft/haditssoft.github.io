@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
@@ -28,17 +29,17 @@ const StyledTableCell = withStyles(theme => {
     },
 })})(TableCell);
 
-function TableHeader() {
+function TableHeader(props) {
     const classes = useStyles();
     return (
         <TableHead className={classes.addShadow}>
             <TableRow>
-                <StyledTableCell>Level</StyledTableCell>
-                <StyledTableCell>Warna</StyledTableCell>
-                <StyledTableCell>Keterangan</StyledTableCell>
+                <StyledTableCell>{props.t('sanad.level')}</StyledTableCell>
+                <StyledTableCell>{props.t('sanad.color')}</StyledTableCell>
+                <StyledTableCell>{props.t('sanad.description')}</StyledTableCell>
             </TableRow>
         </TableHead>
     );
 };
 
-export default React.memo(TableHeader);
+export default withTranslation()(React.memo(TableHeader));

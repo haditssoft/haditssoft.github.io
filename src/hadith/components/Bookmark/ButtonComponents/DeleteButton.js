@@ -1,6 +1,7 @@
 import React from 'react';
 // import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { withTranslation } from 'react-i18next';
 // import DeleteIcon from '@material-ui/icons/Delete';
 
 // const useStyles = makeStyles(theme => ({
@@ -20,9 +21,9 @@ const DeleteButton = (props) => {
             onClick={props.handleDeleteClicked}
             aria-label="Delete">
             {/* <DeleteIcon className={classes.iconSmall} /> */}
-            Delete
+            {props.t('bookmark.delete')}
         </Button>
     );
 }
 
-export default React.memo(DeleteButton);
+export default withTranslation()(React.memo(DeleteButton));

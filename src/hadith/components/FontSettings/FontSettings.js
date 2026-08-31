@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { withTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
@@ -97,20 +98,20 @@ const FontSettings = (props) => {
       open={props.open}
       onClose={props.clicked(false)}
     >
-      <Typography classes={{ root: classes.headTitle }} gutterBottom variant='h6'>Font Arab</Typography>
-      <Typography classes={{ root: classes.root }} variant='body1'>Nama</Typography>
+      <Typography classes={{ root: classes.headTitle }} gutterBottom variant='h6'>{props.t('fontSettings.arabicFont')}</Typography>
+      <Typography classes={{ root: classes.root }} variant='body1'>{props.t('fontSettings.name')}</Typography>
       <ComboFont getFontSetting={getFontSetting} lang='arabic' />
-      <Typography classes={{ root: classes.root }} variant='body1'>Jenis</Typography>
+      <Typography classes={{ root: classes.root }} variant='body1'>{props.t('fontSettings.type')}</Typography>
       <ComboStyle lang='arabic' />
-      <Typography classes={{ root: classes.root }} variant='body1'>Ukuran</Typography>
+      <Typography classes={{ root: classes.root }} variant='body1'>{props.t('fontSettings.size')}</Typography>
       <SlideSize lang='arabic' />
       <Divider classes={{ root: classes.dividerWidth }} />
-      <Typography classes={{ root: classes.headTitle }} gutterBottom variant='h6'>Font Indonesia</Typography>
-      <Typography classes={{ root: classes.root }} variant='body1'>Nama</Typography>
+      <Typography classes={{ root: classes.headTitle }} gutterBottom variant='h6'>{props.t('fontSettings.indoFont')}</Typography>
+      <Typography classes={{ root: classes.root }} variant='body1'>{props.t('fontSettings.name')}</Typography>
       <ComboFont getFontSetting={getFontSetting} lang='indo' />
-      <Typography classes={{ root: classes.root }} variant='body1'>Jenis</Typography>
+      <Typography classes={{ root: classes.root }} variant='body1'>{props.t('fontSettings.type')}</Typography>
       <ComboStyle lang='indo' />
-      <Typography classes={{ root: classes.root }} variant='body1'>Ukuran</Typography>
+      <Typography classes={{ root: classes.root }} variant='body1'>{props.t('fontSettings.size')}</Typography>
       <SlideSize lang='indo' />
     </Drawer>
   );
@@ -123,4 +124,4 @@ const FontSettings = (props) => {
 //   };
 // };
 
-export default React.memo(FontSettings);
+export default withTranslation()(React.memo(FontSettings));

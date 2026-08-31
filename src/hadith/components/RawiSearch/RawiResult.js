@@ -4,11 +4,12 @@ import List from '@material-ui/core/List';
 
 import { FixedSizeList } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
+import { withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import ListOfRawiName from './ListOfRawiName';
 
 
-function RawiResult({ tabBodyHeight, resultRawiLength, reRenderRawiResult }) {
+function RawiResult({ tabBodyHeight, resultRawiLength, reRenderRawiResult, t }) {
 
   return (
     <AutoSizer>
@@ -22,7 +23,7 @@ function RawiResult({ tabBodyHeight, resultRawiLength, reRenderRawiResult }) {
             aria-labelledby='rawiresult-list-subheader'
             subheader={
               <ListSubheader component='div' id='rawiresult-list-subheader'>
-                Result: {resultRawiLength}
+                {t('rawiSearch.result', { count: resultRawiLength })}
               </ListSubheader>
             }
           >
@@ -49,4 +50,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(React.memo(RawiResult));
+export default withTranslation()(connect(mapStateToProps)(React.memo(RawiResult)));

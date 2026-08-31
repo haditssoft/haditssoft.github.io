@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import { withTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(theme => ({
     textField: {
@@ -30,7 +31,7 @@ const PasswordConfirmInput = props => {
             onChange={handleChange}
             onKeyPress={handleEnterKey}
             id="outlined-password-confirm-input"
-            label="Confirm Password"
+            label={props.t('loginForm.confirmPassword')}
             classes={{ root: classes.textField }}
             type="password"
             name="confirm-password"
@@ -40,4 +41,4 @@ const PasswordConfirmInput = props => {
     );
 }
 
-export default PasswordConfirmInput;
+export default withTranslation()(PasswordConfirmInput);

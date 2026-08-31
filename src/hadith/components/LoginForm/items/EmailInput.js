@@ -2,6 +2,7 @@ import React from 'react';
 // import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import { withTranslation } from 'react-i18next';
 
 
 const useStyles = makeStyles(theme => ({
@@ -25,7 +26,7 @@ const EmailInput = props => {
         <TextField
             onChange={handleChange}
             id="outlined-email-input"
-            label="Email"
+            label={props.t('loginForm.email')}
             classes={{ root: classes.textField }}
             type="email"
             name="email"
@@ -38,4 +39,4 @@ const EmailInput = props => {
     );
 }
 
-export default React.memo(EmailInput);
+export default withTranslation()(React.memo(EmailInput));

@@ -23,6 +23,7 @@ import ReportForm from '../Report/ReportForm';
 import AiSummary from '../AiSummary/AiSummary';
 import iconLabelTema from '../items/IconLabelTema';
 import { IconSearchRawi, IconSearchResult, IconTematis } from '../items/IconsMDI';
+import { withTranslation } from 'react-i18next';
 
 const areEqual = (prev, next) => {
     if (prev.whichTab === next.whichTab) {
@@ -41,7 +42,7 @@ const TabDialogChild = (props) => {
             <DialogContent id="tab-dialog">
                 {props.whichTab == 'left' ? (<Tabs
                     directIon='rtl'
-                    tooltip={['Daftar buku','Berdasar Kedudukan','Tematis','Bookmarks','Hasil cari']}
+                    tooltip={[props.t('dialogTab.bookList'),props.t('dialogTab.byPosition'),props.t('dialogTab.thematic'),props.t('dialogTab.bookmarks'),props.t('dialogTab.searchResults')]}
                     icon={[<BookIcon />, <RankingIcon />, <IconTematis />, <BookmarkIcon />, <IconSearchResult />]}
                     tabContent={[<Books />,
                     <RankWrapper />,
@@ -50,17 +51,17 @@ const TabDialogChild = (props) => {
                     <SelectBook />]}
                 />) : (<Tabs
                 directIon='ltr'
-                tooltip={['Daftar hadits','Sanad','Hadits serupa','Cari rawi','Laporkan']}
+                tooltip={[props.t('dialogTab.hadithList'),props.t('dialogTab.sanad'),props.t('dialogTab.similarHadith'),props.t('dialogTab.searchNarrator'),props.t('dialogTab.report')]}
                 icon={[<ListHadithIcon />, <ChainIcon />, <SimilarIcon />, <IconSearchRawi />, <EmailIcon />]}
                 tabContent={[<AiSummary />, <Sanad />, <Similar />, <RawiSearch />, <ReportForm />]} />)}
             </DialogContent>
             <DialogActions>
             <Button onClick={handleClose} color="primary" autoFocus>
-                Close
+                {props.t('dialogTab.close')}
             </Button>
             </DialogActions>
         </>
     );
 }
 
-export default React.memo(TabDialogChild, areEqual);
+export default withTranslation()(React.memo(TabDialogChild, areEqual));

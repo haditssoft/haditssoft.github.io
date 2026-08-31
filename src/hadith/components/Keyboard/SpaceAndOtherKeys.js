@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -39,7 +40,7 @@ const useSmallStyles = makeStyles({
     },
 });
 
-const SpaceAndOtherKeys = ({ clicked }) => {
+const SpaceAndOtherKeys = ({ clicked, t }) => {
     const theme = useTheme();
     const isWindowSmall = useMediaQuery(theme.breakpoints.down('xs'));
     const normalClasses = useStyles();
@@ -52,11 +53,11 @@ const SpaceAndOtherKeys = ({ clicked }) => {
     }
     return (
         <div className={classes.setPadding}>
-            <Button onClick={clicked} variant="text" color="primary" className={classes.largeButton}>Shift</Button>
-            <Button onClick={clicked} variant="text" color="primary" className={classes.xLargebutton}>Space</Button>
-            <Button onClick={clicked} variant="text" color="primary" className={classes.largeButton}>Delete</Button>
+            <Button onClick={clicked} variant="text" color="primary" className={classes.largeButton}>{t('keyboard.shift')}</Button>
+            <Button onClick={clicked} variant="text" color="primary" className={classes.xLargebutton}>{t('keyboard.space')}</Button>
+            <Button onClick={clicked} variant="text" color="primary" className={classes.largeButton}>{t('keyboard.delete')}</Button>
         </div>
     );
 }
 
-export default React.memo(SpaceAndOtherKeys);
+export default withTranslation()(React.memo(SpaceAndOtherKeys));

@@ -1,0 +1,154 @@
+{
+  "appBar": {
+    "font": "Font",
+    "copy": "Copy",
+    "note": "Catatan",
+    "bio": "Biografi",
+    "info": "Info",
+    "account": "Akun",
+    "signOut": "Sign Out",
+    "signIn": "Sign In",
+    "changePassword": "Ganti Kata Sandi",
+    "fontSettings": "Pengaturan Font",
+    "copyTooltip": "Salin arab & terjemahan",
+    "notesTooltip": "Catatan",
+    "biographyTooltip": "Biografi",
+    "infoTooltip": "Info",
+    "accountTooltip": "Akun Pengguna",
+    "textCopied": "Teks berhasil dicopy",
+    "noTextToCopy": "Tidak ada teks untuk dicopy",
+    "signInRequiredNote": "Sign in diperlukan untuk melihat dan membuat catatan"
+  },
+  "settings": {
+    "searchMode": "Mode cari",
+    "singleKeyword": "Satu kata kunci",
+    "multiKeyword": "Multi kata kunci",
+    "searchPerBook": "Cari per kitab",
+    "searchAllBooks": "Cari semua kitab",
+    "translationLanguage": "Bahasa terjemahan"
+  },
+  "appSettings": {
+    "settings": "Settings",
+    "darkMode": "Mode gelap"
+  },
+  "dialogTab": {
+    "bookList": "Daftar buku",
+    "byPosition": "Berdasar Kedudukan",
+    "thematic": "Tematis",
+    "bookmarks": "Bookmarks",
+    "searchResults": "Hasil cari",
+    "hadithList": "Daftar hadits",
+    "sanad": "Sanad",
+    "similarHadith": "Hadits serupa",
+    "searchNarrator": "Cari rawi",
+    "report": "Laporkan",
+    "close": "Tutup"
+  },
+  "bookmark": {
+    "bookmarked": "Hadits berhasil dibookmark",
+    "alreadyExists": "Telah ada di bookmark",
+    "signInRequired": "Sign in diperlukan untuk membuat dan melihat bookmark",
+    "deleting": "Menghapus bookmark...",
+    "showBookmark": "Tampilkan bookmark",
+    "totalBookmarks": "Total bookmark(s): {{count}}",
+    "newTitle": "Buat judul baru",
+    "typeTitle": "Ketik judul",
+    "availableTitle": "Judul tersedia",
+    "chooseTitle": "Pilih judul",
+    "save": "Save",
+    "delete": "Delete",
+    "total": "Total: {{count}}"
+  },
+  "biography": {
+    "title": "Biografi",
+    "imam": " Imam {{name}}",
+    "close": "Close"
+  },
+  "info": {
+    "title": "Informasi",
+    "close": "Close",
+    "preface": "Kata pengantar",
+    "definition": "Definisi dalam ilmu musthalah hadits",
+    "narrationWay": "Menurut jalan periwayatannya",
+    "toWhom": "Ditinjau kepada orang yang disandarkan",
+    "strongWeak": "Dari sisi kuat dan lemahnya hadits",
+    "invalidChain": "Tertolak sebab gugur sanadnya",
+    "suspicionFlaw": "Tertolak sebab terindikasi cacat",
+    "jarhTadil": "Istilah dalam jarhu wa ta'dil",
+    "standardBook": "Penyesuaian nomer standar buku"
+  },
+  "rawiSearch": {
+    "searchQuery": "Search Query",
+    "name": "Nama",
+    "kunyah": "Kunyah",
+    "kalangan": "Kalangan",
+    "level": "Level",
+    "search": "Search",
+    "result": "Hasil: {{count}}"
+  },
+  "searchResult": {
+    "all": "Semua"
+  },
+  "report": {
+    "report": "Laporan",
+    "charsRemaining": "Sisa karakter: ",
+    "keepTyping": "Terus mengetik...",
+    "removeChars": "Please remove some characters",
+    "submit": "Submit"
+  },
+  "loginForm": {
+    "signIn": "Masuk",
+    "signUp": "Daftar",
+    "signInTitle": "Masuk",
+    "signUpTitle": "Daftar",
+    "preserveData": "untuk menyimpan data Anda",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Konfirmasi Password",
+    "forgotPassword": "Lupa Kata Sandi?",
+    "noAccount": "Belum punya akun? Daftar",
+    "hasAccount": "Sudah punya akun? Masuk",
+    "skip": "Lewati",
+    "passwordReset": "Reset Kata Sandi",
+    "successful": "Berhasil",
+    "passwordResetMsg": "Kata sandi Anda berhasil direset. Anda bisa masuk dengan kata sandi baru.",
+    "login": "Masuk"
+  },
+  "sanad": {
+    "level": "Level",
+    "color": "Warna",
+    "description": "Keterangan",
+    "counter": "{{current}} dari {{total}}",
+    "close": "Tutup"
+  },
+  "aiSummary": {
+    "title": "Ringkasan AI",
+    "error": "Gagal memuat ringkasan"
+  },
+  "keyboard": {
+    "shift": "Shift",
+    "space": "Space",
+    "delete": "Delete"
+  },
+  "fontSettings": {
+    "arabicFont": "Font Arab",
+    "indoFont": "Font Indonesia",
+    "name": "Nama",
+    "type": "Jenis",
+    "size": "Ukuran"
+  },
+  "expansionPanel": {
+    "bukhari": "Bukhari",
+    "muslim": "Muslim",
+    "tirmidzi": "Tirmidzi",
+    "abuDaud": "Abu Daud",
+    "nasai": "Nasa'i",
+    "ibnuMajah": "Ibnu Majah",
+    "darimi": "Darimi",
+    "ahmad": "Ahmad",
+    "malik": "Malik"
+  },
+  "similar": {
+    "total": "Total: {{count}}"
+  }
+}

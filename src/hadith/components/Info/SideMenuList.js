@@ -5,6 +5,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 
+import { withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { CONTENTINFO } from '../../store/action';
 
@@ -36,7 +37,7 @@ const SideMenuList = props => {
             selected={contentInfo === 0}
             onClick={() => handleListItemClick(0)}
           >
-        <ListItemText primary="Kata pengantar"
+        <ListItemText primary={props.t('info.preface')}
           primaryTypographyProps={{ variant: 'body2', className: classes.typographyColor }} />
         </ListItem>
       </List>
@@ -47,7 +48,7 @@ const SideMenuList = props => {
           selected={contentInfo === 1}
           onClick={() => handleListItemClick(1)}
         >
-          <ListItemText primary="Definisi dalam ilmu musthalah hadits"
+          <ListItemText primary={props.t('info.definition')}
             primaryTypographyProps={{ variant: 'body2', className: classes.typographyColor }} />
         </ListItem>
         <ListItem
@@ -55,7 +56,7 @@ const SideMenuList = props => {
           selected={contentInfo === 2}
           onClick={() => handleListItemClick(2)}
         >
-          <ListItemText primary="Menurut jalan periwayatannya"
+          <ListItemText primary={props.t('info.narrationWay')}
             primaryTypographyProps={{ variant: 'body2', className: classes.typographyColor }} />
         </ListItem>
         <ListItem
@@ -63,7 +64,7 @@ const SideMenuList = props => {
           selected={contentInfo === 3}
           onClick={() => handleListItemClick(3)}
         >
-          <ListItemText primary="Ditinjau kepada orang yang disandarkan"
+          <ListItemText primary={props.t('info.toWhom')}
             primaryTypographyProps={{ variant: 'body2', className: classes.typographyColor }} />
         </ListItem>
         <ListItem
@@ -71,7 +72,7 @@ const SideMenuList = props => {
           selected={contentInfo === 4}
           onClick={() => handleListItemClick(4)}
         >
-          <ListItemText primary="Dari sisi kuat dan lemahnya hadits"
+          <ListItemText primary={props.t('info.strongWeak')}
             primaryTypographyProps={{ variant: 'body2', className: classes.typographyColor }} />
         </ListItem>
         <ListItem
@@ -79,7 +80,7 @@ const SideMenuList = props => {
           selected={contentInfo === 5}
           onClick={() => handleListItemClick(5)}
         >
-          <ListItemText primary="Tertolak sebab gugur sanadnya"
+          <ListItemText primary={props.t('info.invalidChain')}
             primaryTypographyProps={{ variant: 'body2', className: classes.typographyColor }} />
         </ListItem>
         <ListItem
@@ -87,7 +88,7 @@ const SideMenuList = props => {
           selected={contentInfo === 6}
           onClick={() => handleListItemClick(6)}
         >
-          <ListItemText primary="Tertolak sebab terindikasi cacat"
+          <ListItemText primary={props.t('info.suspicionFlaw')}
             primaryTypographyProps={{ variant: 'body2', className: classes.typographyColor }} />
         </ListItem>
         <ListItem
@@ -95,7 +96,7 @@ const SideMenuList = props => {
           selected={contentInfo === 7}
           onClick={() => handleListItemClick(7)}
         >
-          <ListItemText primary="Istilah dalam jarhu wa ta'dil"
+          <ListItemText primary={props.t('info.jarhTadil')}
             primaryTypographyProps={{ variant: 'body2', className: classes.typographyColor }} />
         </ListItem>
       </List>
@@ -106,7 +107,7 @@ const SideMenuList = props => {
               selected={contentInfo === 8}
               onClick={() => handleListItemClick(8)}
           >
-          <ListItemText primary="Penyesuaian nomer standar buku"
+          <ListItemText primary={props.t('info.standardBook')}
             primaryTypographyProps={{ variant: 'body2', className: classes.typographyColor }} />
           </ListItem>
       </List>
@@ -126,4 +127,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(React.memo(SideMenuList));
+export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(React.memo(SideMenuList)));

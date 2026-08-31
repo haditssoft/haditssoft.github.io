@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 import { GLOBALTHEME, LIGHTDARKSWITCH } from '../../store/action';
 import { light, dark } from '../../fungsi/getTheme';
 import { switchServer, authFetch } from '../../sender/api';
+import { withTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -69,12 +70,12 @@ const AppSettings = props => {
   };
 
   return (
-    <List subheader={<ListSubheader>Settings</ListSubheader>} className={classes.root}>
+    <List subheader={<ListSubheader>{props.t('appSettings.settings')}</ListSubheader>} className={classes.root}>
       <ListItem>
         <ListItemIcon>
           <BrightnessMediumIcon />
         </ListItemIcon>
-        <ListItemText id="switch-list-label-theme" primary="Dark mode" />
+        <ListItemText id="switch-list-label-theme" primary={props.t('appSettings.darkMode')} />
         <ListItemSecondaryAction>
           <Switch
             edge="end"
@@ -102,4 +103,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(React.memo(AppSettings));
+export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(React.memo(AppSettings)));

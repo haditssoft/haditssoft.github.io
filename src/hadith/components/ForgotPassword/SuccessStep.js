@@ -6,6 +6,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
+import { withTranslation } from 'react-i18next';
 
 const useStyles = makeStyles({
   setPadding: {
@@ -55,14 +56,14 @@ const SuccessStep = props => {
           className={classes.avatar}
         />
         <Typography className={classes.setFontWeight} variant='h4' color='textPrimary'>
-          Password Reset
+          {props.t('loginForm.passwordReset')}
         </Typography>
         <Typography variant='subtitle2' color='textSecondary'>
-          Successful
+          {props.t('loginForm.successful')}
         </Typography>
       </DialogTitle>
       <Typography className={classes.successMessage} variant='body2'>
-        Your password has been reset successfully. You can now sign in with your new password.
+        {props.t('loginForm.passwordResetMsg')}
       </Typography>
       <DialogActions className={classes.setMarginFlexWidth}>
         <Button
@@ -71,11 +72,11 @@ const SuccessStep = props => {
           color="primary"
           style={{ width: 'inherit', margin: '8px 16px' }}
         >
-          Login
+          {props.t('loginForm.login')}
         </Button>
       </DialogActions>
     </DialogContent>
   );
 };
 
-export default React.memo(SuccessStep);
+export default withTranslation()(React.memo(SuccessStep));

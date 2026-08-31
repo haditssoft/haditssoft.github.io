@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -36,7 +37,7 @@ const HeaderSimilar = (props) => {
                             variant: 'subtitle2',
                             className: classes.customPadding
                         }}
-                        primary={'Total: ' + props.totalSimilar}
+                        primary={props.t('similar.total', { count: props.totalSimilar })}
                     />
                 </ListItem>
             </List>
@@ -44,4 +45,4 @@ const HeaderSimilar = (props) => {
     );
 };
 
-export default React.memo(HeaderSimilar);
+export default withTranslation()(React.memo(HeaderSimilar));

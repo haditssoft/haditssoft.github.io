@@ -11,6 +11,7 @@ import withMobileDialog from '@material-ui/core/withMobileDialog';
 import Draggable from 'react-draggable';
 import Grid from '@material-ui/core/Grid';
 
+import { withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { OPENINFO, TEXTINFO } from '../../store/action';
 import SideMenuList from './SideMenuList';
@@ -135,7 +136,7 @@ class DraggableDialog extends React.Component {
           </Grid>
           <Grid item className={classes.setToFlex}>
             <DialogTitle classes={{ root: classes.root }} id='draggable-info-dialog' onMouseDown={e => e.preventDefault()}>
-              Informasi
+              {this.props.t('info.title')}
                 </DialogTitle>
             <DialogContent>
               <DialogContentText component='span'>
@@ -144,7 +145,7 @@ class DraggableDialog extends React.Component {
             </DialogContent>
             <DialogActions>
               <Button onClick={this.handleClose} color='primary'>
-                Close
+                {this.props.t('info.close')}
                     </Button>
             </DialogActions>
           </Grid>
@@ -169,4 +170,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withMobileDialog()(withStyles(styles)(withTheme(DraggableDialog))));
+export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(withMobileDialog()(withStyles(styles)(withTheme(DraggableDialog)))));

@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 
 import InputRawiSearch from '../items/TextField';
+import { withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import RawiResult from './RawiResult';
 import sender, { setDispatchListOfNarratorName, setDispatchCompleteProfile } from '../../sender/senderDataRequest';
@@ -130,12 +131,12 @@ const RawiQuery = (props) => {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography className={classes.heading}>Search Query</Typography>
+            <Typography className={classes.heading}>{props.t('rawiSearch.searchQuery')}</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails className={classes.toFlextColumn}>
               <InputRawiSearch
                   id='rawiSearchNama'
-                  watermark='Nama'
+                  watermark={props.t('rawiSearch.name')}
                   select={false}
                   require={false}
                   child={null}
@@ -145,7 +146,7 @@ const RawiQuery = (props) => {
               />
               <InputRawiSearch
                   id='rawiSearchKunyah'
-                  watermark='Kunyah'
+                  watermark={props.t('rawiSearch.kunyah')}
                   select={false}
                   require={false}
                   child={null}
@@ -155,7 +156,7 @@ const RawiQuery = (props) => {
               />
               <InputRawiSearch
                   id='rawiSearchKalangan'
-                  watermark='Kalangan'
+                  watermark={props.t('rawiSearch.kalangan')}
                   select={true}
                   require={false}
                   child={menuItemKalangan}
@@ -164,7 +165,7 @@ const RawiQuery = (props) => {
               />
               <InputRawiSearch
                   id='rawiSearchLevel'
-                  watermark='Level'
+                  watermark={props.t('rawiSearch.level')}
                   select={true}
                   require={false}
                   child={menuItemLevel}
@@ -172,7 +173,7 @@ const RawiQuery = (props) => {
                   helper=''
               />
               <Button color="primary" className={classes.button} onClick={handleClick}>
-                  Search
+                  {props.t('rawiSearch.search')}
               </Button>
           </ExpansionPanelDetails>
         </ExpansionPanel>
@@ -202,4 +203,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(React.memo(RawiQuery));
+export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(React.memo(RawiQuery)));

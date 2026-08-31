@@ -12,6 +12,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Draggable from 'react-draggable';
 
+import { withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { OPENBIOGRAPHY, TEXTBIOGRAPHY } from '../../store/action';
 import replaceNewLine from '../../fungsi/replaceNewLine';
@@ -100,7 +101,7 @@ class DraggableDialog extends React.Component {
         aria-labelledby='draggable-dialog-title'
       >
         <DialogTitle classes={{ root: classes.root }} id='draggable-dialog-title' onMouseDown={e => e.preventDefault()}>
-          {'Biografi'}<span className={classes.addImamName}>{' Imam ' + imamName}</span>
+          {this.props.t('biography.title')}<span className={classes.addImamName}>{this.props.t('biography.imam', { name: imamName })}</span>
           <Select
             className={classes.selectImam}
             value={imamName}
@@ -143,7 +144,7 @@ class DraggableDialog extends React.Component {
         </DialogContent>
         <DialogActions>
           <Button onClick={this.handleClose} color='primary'>
-            Close
+            {this.props.t('biography.close')}
           </Button>
         </DialogActions>
       </Dialog>
@@ -166,4 +167,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withMobileDialog()(withStyles(styles)(withTheme(DraggableDialog))));
+export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(withMobileDialog()(withStyles(styles)(withTheme(DraggableDialog)))));

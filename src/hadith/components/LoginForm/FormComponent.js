@@ -14,6 +14,7 @@ import PasswordConfirmInput from './items/PasswordConfirmInput';
 import SkipButton from './items/SkipButton';
 import VerifyForm from './items/VerifyForm';
 import { connect } from 'react-redux';
+import { withTranslation } from 'react-i18next';
 import { LOGIN_STATE } from '../../store/action';
 // import getHadithLogo from '../../assets/images/get-hadith-logo.png';
 import { switchServer, setAuthData, getToken } from '../../sender/api';
@@ -293,10 +294,10 @@ const FormComponent = props => {
           className={classes.avatar}
         />
         <Typography className={classes.setFontWeight} variant='h4' color='textPrimary'>
-          {mode === 'signin' ? 'Sign in' : 'Sign up'}
+          {mode === 'signin' ? props.t('loginForm.signInTitle') : props.t('loginForm.signUpTitle')}
         </Typography>
         <Typography variant='subtitle2' color='textSecondary'>
-          to preserve your data
+          {props.t('loginForm.preserveData')}
         </Typography>
       </DialogTitle>
       <EmailInput setEmailRef={setEmailRef} />
@@ -309,7 +310,7 @@ const FormComponent = props => {
             onClick={props.onOpenForgotPassword}
             className={classes.toggleMode}
           >
-            Forgot Password?
+            {props.t('loginForm.forgotPassword')}
           </Link>
         </div>
       )}
@@ -331,12 +332,12 @@ const FormComponent = props => {
           }}
           className={classes.toggleMode}
         >
-          {mode === 'signin' ? "Don't have an account? Sign up" : "Already have an account? Sign in"}
+          {mode === 'signin' ? props.t('loginForm.noAccount') : props.t('loginForm.hasAccount')}
         </Link>
       </div>
       <DialogActions className={classes.setMarginFlexWidth}>
         <Button onClick={handleSubmit} variant='contained' color="primary" style={{ width: 'inherit', margin: '8px 16px' }}>
-          {mode === 'signin' ? 'Sign in' : 'Sign up'}
+          {mode === 'signin' ? props.t('loginForm.signIn') : props.t('loginForm.signUp')}
         </Button>
         <SkipButton handleClose={props.handleClose} />
       </DialogActions>
@@ -350,4 +351,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(React.memo(FormComponent));
+export default withTranslation()(connect(null, mapDispatchToProps)(React.memo(FormComponent)));

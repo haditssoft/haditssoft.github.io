@@ -41,6 +41,7 @@ import LoginForm from './LoginForm/LoginForm';
 import ForgotPassword from './ForgotPassword/ForgotPassword';
 import getNoteName from '../fungsi/getNoteName';
 import withWidth from '@material-ui/core/withWidth';
+import { withTranslation } from 'react-i18next';
 import getKitabName from '../fungsi/getKitabName';
 
 
@@ -240,7 +241,7 @@ class PrimarySearchAppBar extends React.Component {
           console.log('✅ Copied (modern API)');
           // sampe sini diasumsikan berhasil copy teks
           const message = {
-            message: 'Teks berhasil dicopy',
+            message: this.props.t('appBar.textCopied'),
             variant: 'success',
             key: new Date().getTime()
           };
@@ -274,7 +275,7 @@ class PrimarySearchAppBar extends React.Component {
           if (success) {
             // sampe sini diasumsikan berhasil copy teks
             const message = {
-              message: 'Teks berhasil dicopy',
+              message: this.props.t('appBar.textCopied'),
               variant: 'success',
               key: new Date().getTime()
             };
@@ -292,7 +293,7 @@ class PrimarySearchAppBar extends React.Component {
       console.error('✋ Clipboard not supported');
     } else {
       const message = {
-        message: 'Tidak ada teks untuk dicopy',
+        message: this.props.t('appBar.noTextToCopy'),
         variant: 'error',
         key: new Date().getTime()
       };
@@ -337,7 +338,7 @@ class PrimarySearchAppBar extends React.Component {
             })
             .catch(err => console.log('fetch note local', err));
         } else {
-          alert('Sign in diperlukan untuk melihat dan membuat catatan');
+          alert(this.props.t('appBar.signInRequiredNote'));
           return;
         }
       }
@@ -435,13 +436,13 @@ class PrimarySearchAppBar extends React.Component {
           <IconButton color={iconMenuColor}>
             <TextFieldsIcon />
           </IconButton>
-          <p>Font</p>
+          <p>{this.props.t('appBar.font')}</p>
         </MenuItem>
         <MenuItem disableGutters className={classes.setPaddingAndColor} onClick={this.handleCopyHaditsText}>
           <IconButton color={iconMenuColor}>
             <FileCopyIcon />
           </IconButton>
-          <p>Copy</p>
+          <p>{this.props.t('appBar.copy')}</p>
         </MenuItem>
         <MenuItem disableGutters className={classes.setPaddingAndColor} onClick={this.handleNoteLocal}>
           <IconButton color={iconMenuColor}>
@@ -451,25 +452,25 @@ class PrimarySearchAppBar extends React.Component {
               </Badge> :
               <IconNote />}
           </IconButton>
-          <p>Note</p>
+          <p>{this.props.t('appBar.note')}</p>
         </MenuItem>
         <MenuItem disableGutters className={classes.setPaddingAndColor} onClick={this.handleBiography}>
           <IconButton color={iconMenuColor}>
             <IconBiografi />
           </IconButton>
-          <p>Bio</p>
+          <p>{this.props.t('appBar.bio')}</p>
         </MenuItem>
         <MenuItem disableGutters className={classes.setPaddingAndColor} onClick={this.handleAccountMenuOpen}>
           <IconButton color={iconMenuColor}>
             {localStorage.getItem('token') ? <IconAccountCheck /> : <IconAccountCircle />}
           </IconButton>
-          <p>Account</p>
+          <p>{this.props.t('appBar.account')}</p>
         </MenuItem>
         <MenuItem disableGutters className={classes.setPaddingAndColor} onClick={this.handleInfo}>
           <IconButton color={iconMenuColor}>
             <InfoIcon />
           </IconButton>
-          <p>Info</p>
+          <p>{this.props.t('appBar.info')}</p>
         </MenuItem>
       </Menu>
     );
@@ -484,10 +485,10 @@ class PrimarySearchAppBar extends React.Component {
         onClose={this.handleAccountMenuClose}
       >
         {localStorage.getItem('token') ?
-          <MenuItem onClick={this.handleSignOut}>Sign Out</MenuItem> :
-          <MenuItem onClick={this.handleSignIn}>Sign In</MenuItem>
+          <MenuItem onClick={this.handleSignOut}>{this.props.t('appBar.signOut')}</MenuItem> :
+          <MenuItem onClick={this.handleSignIn}>{this.props.t('appBar.signIn')}</MenuItem>
         }
-        <MenuItem onClick={this.handleChangePassword}>Change Password</MenuItem>
+        <MenuItem onClick={this.handleChangePassword}>{this.props.t('appBar.changePassword')}</MenuItem>
       </Menu>
     );
 
@@ -505,17 +506,17 @@ class PrimarySearchAppBar extends React.Component {
             <FontSettings open={this.state.openFontDrawer} clicked={this.toggleFontDrawer} />
             <Hidden smDown>
               <div className={classes.sectionDesktop}>
-                <Tooltip TransitionComponent={Zoom} title="Font settings">
+                <Tooltip TransitionComponent={Zoom} title={this.props.t('appBar.fontSettings')}>
                   <IconButton onClick={this.toggleFontDrawer(true)}>
                     <TextFieldsIcon />
                   </IconButton>
                 </Tooltip>
-                <Tooltip TransitionComponent={Zoom} title="Copy arabic & translation">
+                <Tooltip TransitionComponent={Zoom} title={this.props.t('appBar.copyTooltip')}>
                   <IconButton onClick={this.handleCopyHaditsText}>
                     <FileCopyIcon />
                   </IconButton>
                 </Tooltip>
-                <Tooltip TransitionComponent={Zoom} title="Catatan">
+                <Tooltip TransitionComponent={Zoom} title={this.props.t('appBar.notesTooltip')}>
                   <IconButton onClick={this.handleNoteLocal}>
                     {noteExist ?
                       <Badge badgeContent={1} color="secondary">
@@ -524,19 +525,19 @@ class PrimarySearchAppBar extends React.Component {
                       <IconNote />}
                   </IconButton>
                 </Tooltip>
-                <Tooltip TransitionComponent={Zoom} title="Biografi">
+                <Tooltip TransitionComponent={Zoom} title={this.props.t('appBar.biographyTooltip')}>
                   <IconButton onClick={this.handleBiography}>
                     <IconBiografi />
                   </IconButton>
                 </Tooltip>
-                <Tooltip TransitionComponent={Zoom} title="Info">
+                <Tooltip TransitionComponent={Zoom} title={this.props.t('appBar.infoTooltip')}>
                   <IconButton
                     onClick={this.handleInfo}
                   >
                     <InfoIcon />
                   </IconButton>
                 </Tooltip>
-                <Tooltip TransitionComponent={Zoom} title="User Account">
+                <Tooltip TransitionComponent={Zoom} title={this.props.t('appBar.accountTooltip')}>
                   <IconButton onClick={this.handleAccountMenuOpen}>
                     {localStorage.getItem('token') ? <IconAccountCheck /> : <IconAccountCircle />}
                   </IconButton>
@@ -606,4 +607,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withTheme(withWidth()(PrimarySearchAppBar))));
+export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withTheme(withWidth()(PrimarySearchAppBar)))));

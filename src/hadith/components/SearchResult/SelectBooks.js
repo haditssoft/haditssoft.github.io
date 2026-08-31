@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import { withStyles, withTheme } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import LinearProgress from '@material-ui/core/LinearProgress';
@@ -70,7 +71,7 @@ class ControlledExpansionPanels extends React.Component {
       <div className={classes.root}>
         {this.props.isSearching && <LinearProgress classes={{ root: classes.linearProgress }} />}
         <List dense>
-          <SelectionControl key={0} elementid={0} label='Semua' action={CHECKALL} variant="listitem" />
+          <SelectionControl key={0} elementid={0} label={this.props.t('searchResult.all')} action={CHECKALL} variant="listitem" />
           {selectionControls}
         </List>
       </div>
@@ -84,4 +85,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(withTheme(ControlledExpansionPanels)));
+export default withTranslation()(connect(mapStateToProps)(withStyles(styles)(withTheme(ControlledExpansionPanels))));

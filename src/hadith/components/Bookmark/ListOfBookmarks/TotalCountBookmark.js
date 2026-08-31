@@ -3,6 +3,7 @@ import React from 'react';
 import ListSubheader from '@material-ui/core/ListSubheader';
 
 import { connect } from 'react-redux';
+import { withTranslation } from 'react-i18next';
 
 // const useStyles = makeStyles(theme => ({
 //     root: {
@@ -20,7 +21,7 @@ const TotalCountBookmark = props => {
             component='div'
             id='table-bookmark-list-subheader'
         >
-            Total: {props.totalRow}
+            {props.t('bookmark.total', { count: props.totalRow })}
         </ListSubheader>
     )
 };
@@ -31,4 +32,4 @@ const mapStateToProps = state => {
     }
   }
 
-export default connect(mapStateToProps)(React.memo(TotalCountBookmark));
+export default withTranslation()(connect(mapStateToProps)(React.memo(TotalCountBookmark)));

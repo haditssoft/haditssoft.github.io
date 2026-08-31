@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { withTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(theme => ({
     button: {
@@ -14,9 +15,9 @@ const SignInButton = props => {
 
     return (
         <Button onClick={props.handleClose} variant='text' color='primary' className={classes.button}>
-            Skip
+            {props.t('loginForm.skip')}
         </Button>
     );
 }
 
-export default React.memo(SignInButton, () => true);
+export default withTranslation()(React.memo(SignInButton, () => true));
