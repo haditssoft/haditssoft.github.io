@@ -1,9 +1,7 @@
-import { RADIOCHECKED, RADIOMODECARICHECKED, SEARCHENDPOINTMODE } from "../action";
+import { RADIOCHECKED } from "../action";
 
 const initialState = {
-    radioBookmark: 0,
-    radioModeCari: 1, // default nya multi kata kunci
-    radioSearchEndpoint: 1 // 0 = per-book, 1 = all-books (default)
+    radioBookmark: 0
 };
 
 const reducer = (state = initialState, action) => {
@@ -12,16 +10,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 radioBookmark: action.checked
-            };
-        case RADIOMODECARICHECKED:
-            return {
-                ...state,
-                radioModeCari: action.checked
-            };
-        case SEARCHENDPOINTMODE:
-            return {
-                ...state,
-                radioSearchEndpoint: action.checked
             };
         default:
             return state;
