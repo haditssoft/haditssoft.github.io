@@ -63,7 +63,9 @@ const inputProps = (parent) => {
             padding: 0,
             color: parent === 'grid' ? undefined : '#fff',
             textAlign: 'inherit',
-        }
+        },
+        inputMode: 'numeric',
+        pattern: '[0-9]*'
     };
 }
 
