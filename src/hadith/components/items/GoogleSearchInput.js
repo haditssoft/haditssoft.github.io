@@ -6,7 +6,6 @@ import InputBase from '@material-ui/core/InputBase';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../store/action';
 import { setDispatchSearchCount } from '../../sender/senderDataRequest';
-import { switchServer, authFetch } from '../../sender/api';
 import OptionSetting from '../OptionSetting/OptionSetting';
 import clearData from '../../fungsi/clearData';
 import executeRequest from '../../fungsi/sendSearchRequest';
@@ -91,27 +90,7 @@ class CustomizedInputBase extends React.Component {
     if (matchSearch) {
       const queryParams = new URLSearchParams(this.props.location.search);
       const query = queryParams.get('query');
-      const mode = queryParams.get('mode');
       const books = queryParams.get('books');
-
-
-      const idxMode = (mode === 'single') ? 0 : 1;
-      const token = localStorage.getItem('token');
-      if (token) {
-        authFetch(switchServer + 'search-mode', {
-          method: 'PUT',
-          body: JSON.stringify({ search_mode: idxMode })
-        })
-          .then(res => {
-            if (!res.ok) {
-              throw new Error('Failed to save search mode setting');
-            }
-            return res;
-          })
-          .catch(err => console.log(err));
-      }
-      this.props.onRadioModeCariChecked(idxMode);
-
 
       if (books !== 'all') {
         this.props.onBookToSearchChecked(actionTypes.CHECKALL, false);
@@ -211,13 +190,9 @@ class CustomizedInputBase extends React.Component {
       // transform into array of keywords
       // because the back-end needs an array
       // even if it just 1 keyword
-      if (this.props.radioModeCari === 0) {
-        setKeyWords([keyWord]);
-        keywordForSearching = [keywordForSearching];
-      } else if (this.props.radioModeCari === 1) {
-        setKeyWords(keyWord.split(/ |\//g).filter(word => word !== ''));
-        keywordForSearching = keywordForSearching.split(/ |\//g).filter(word => word !== '');
-      }
+      // multi-keyword is always applied ("Cari semua kitab" mode)
+      setKeyWords(keyWord.split(/ |\//g).filter(word => word !== ''));
+      keywordForSearching = keywordForSearching.split(/ |\//g).filter(word => word !== '');
     } else {
       setKeyWords([]);
       keywordForSearching = [];
@@ -279,7 +254,7 @@ class CustomizedInputBase extends React.Component {
       columnName,
       keywordForSearching,
       numberToBeShown,
-      this.props.radioSearchEndpoint,
+      1,
       () => this.props.onSetSearching(false)
     ]);
 
@@ -307,7 +282,7 @@ class CustomizedInputBase extends React.Component {
           checkedBook += this.props.CHECKSYAFII ? 'syafii,' : '';
           checkedBook = checkedBook.replace(/,$/, '');
         }
-        const querySearch = `/search?query=${this.inputBase.value}&mode=${this.props.radioModeCari ? 'multi' : 'single'}&books=${checkedBook}&no=${numberToBeShown}`;
+        const querySearch = `/search?query=${this.inputBase.value}&mode=multi&books=${checkedBook}&no=${numberToBeShown}`;
         this.props.history.push(querySearch);
         if (currentSizeId === 'sm' || currentSizeId === 'xs') {
           // disini cukup ganti urlnya saja, nnti akan mentrigger useEffect()
@@ -365,7 +340,6 @@ class CustomizedInputBase extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    radioModeCari: state.controlRadioCheck.radioModeCari,
     checkAll: state.checkToSearch.checkAll,
     CHECKBUKHARI: state.checkToSearch.checkBukhari,
     CHECKMUSLIM: state.checkToSearch.checkMuslim,
@@ -402,7 +376,6 @@ const mapStateToProps = state => {
     expandTema: state.expandedPanel.expandTema,
     openKeyboard: state.arabicKeyboard.openKeyboard,
     searchValue: state.inputValue.searchValue,
-    radioSearchEndpoint: state.controlRadioCheck.radioSearchEndpoint,
     isSearching: state.isSearching.isSearching
   };
 };
@@ -438,7 +411,6 @@ const mapDispatchToProps = dispatch => {
     }),
     onShowTabDialog: (booLean, str) => dispatch({ type: actionTypes.TABDIALOG, show: booLean, side: str }),
     onBookToSearchChecked: (action, booL) => dispatch({ type: actionTypes[action], checked: booL }),
-    onRadioModeCariChecked: (idx) => dispatch({ type: actionTypes.RADIOMODECARICHECKED, checked: idx }),
   };
 };
 

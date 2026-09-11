@@ -5,8 +5,7 @@ import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import { connect } from 'react-redux';
-import { RADIOCHECKED, RADIOMODECARICHECKED, SEARCHENDPOINTMODE, SETTRANSLATIONLANG } from '../../store/action';
-import { switchServer, authFetch } from '../../sender/api';
+import { RADIOCHECKED, SETTRANSLATIONLANG } from '../../store/action';
 
 const styles = theme => ({
   root: {
@@ -39,23 +38,9 @@ class RadioButtonsGroup extends React.Component {
       if (this.props.radioBookmark !== nextProps.radioBookmark) {
         return true;
       }
-    } else if (this.props.group === 'searchendpoint') {
-      if (this.props.radioSearchEndpoint !== nextProps.radioSearchEndpoint) {
-        if (this.props.idx === this.props.radioSearchEndpoint || nextProps.idx === nextProps.radioSearchEndpoint) {
-          return true;
-        }
-      }
     } else if (this.props.group === 'translationlang') {
       if (this.props.radioTranslationLang !== nextProps.radioTranslationLang) {
-        if (this.props.value === this.props.radioTranslationLang || nextProps.value === nextProps.radioTranslationLang) {
-          return true;
-        }
-      }
-    } else {
-      if (this.props.radioModeCari !== nextProps.radioModeCari) {
-        if (this.props.idx === this.props.radioModeCari || nextProps.idx === nextProps.radioModeCari) {
-          return true;
-        }
+        return true;
       }
     }
     return false;
@@ -64,31 +49,13 @@ class RadioButtonsGroup extends React.Component {
   handleChange = (idx, group) => event => {
     if (group === 'bookmark') {
       this.props.onRadioBookmarkChecked(idx);
-    } else if (group === 'searchendpoint') {
-      this.props.onSearchEndpointModeChecked(idx);
     } else if (group === 'translationlang') {
       this.props.onRadioTranslationLangChecked(this.props.value);
-    } else {
-      this.props.onRadioModeCariChecked(idx);
-      const token = localStorage.getItem('token');
-      if (token) {
-        authFetch(switchServer + 'search-mode', {
-          method: 'PUT',
-          body: JSON.stringify({ search_mode: idx })
-        })
-          .then(res => {
-            if (!res.ok) {
-              throw new Error('Failed to save search mode setting');
-            }
-            return res;
-          })
-          .catch(err => console.log(err));
-      }
     }
   };
 
   render() {
-    const { classes, radioBookmark, radioModeCari, radioSearchEndpoint, radioTranslationLang, group, idx, value, label } = this.props;
+    const { classes, radioBookmark, radioTranslationLang, group, idx, value, label } = this.props;
 
     let classesStyle;
     let checkedState;
@@ -96,15 +63,9 @@ class RadioButtonsGroup extends React.Component {
     if (group === 'bookmark') {
       classesStyle = { root: classes.marginLabel };
       checkedState = radioBookmark === idx;
-    } else if (group === 'searchendpoint') {
-      classesStyle = { root: classes.setPadding, label: classes.setLabel };
-      checkedState = radioSearchEndpoint === idx;
-    } else if (group === 'translationlang') {
-      classesStyle = { root: classes.setPadding, label: classes.setLabel };
-      checkedState = radioTranslationLang === value;
     } else {
       classesStyle = { root: classes.setPadding, label: classes.setLabel };
-      checkedState = radioModeCari === idx;
+      checkedState = radioTranslationLang === value;
     }
 
     return (
@@ -129,8 +90,6 @@ RadioButtonsGroup.propTypes = {
 const mapStateToProps = state => {
   return {
     radioBookmark: state.controlRadioCheck.radioBookmark,
-    radioModeCari: state.controlRadioCheck.radioModeCari,
-    radioSearchEndpoint: state.controlRadioCheck.radioSearchEndpoint,
     radioTranslationLang: state.translationLang.language
   };
 };
@@ -138,8 +97,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onRadioBookmarkChecked: (idx) => dispatch({ type: RADIOCHECKED, checked: idx }),
-    onRadioModeCariChecked: (idx) => dispatch({ type: RADIOMODECARICHECKED, checked: idx }),
-    onSearchEndpointModeChecked: (idx) => dispatch({ type: SEARCHENDPOINTMODE, checked: idx }),
     onRadioTranslationLangChecked: (language) => dispatch({ type: SETTRANSLATIONLANG, language: language })
   };
 };
