@@ -8,6 +8,22 @@ import { connect } from 'react-redux';
 import sender, { setDispatchKitab, setDispatchBab } from '../sender/senderDataRequest';
 import KitabAndBab from './items/KitabAndBab';
 
+const fieldSuffixByLang = {
+    'Indonesia': '',
+    'English': 'Eng',
+    'Urdu': 'Urd',
+    'Bengali': 'Ben'
+};
+
+const resolveComboboxItem = (item, lang, baseField) => {
+    const suffix = fieldSuffixByLang[lang] || '';
+    const targetField = baseField + suffix;
+    if (item && item[targetField] && String(item[targetField]).trim() !== '') {
+        return item[targetField];
+    }
+    return '';
+};
+
 const useStyles = makeStyles(theme => ({
   root: {
     order: 2,
@@ -71,7 +87,7 @@ const SimpleSelect = props => {
   const itemKitab = props.kitab.map((eachItem) => {
     return (
       <MenuItem className={classes.setFontSize} key={eachItem.VMember} value={eachItem.VMember}>
-        {eachItem.NKitab}
+        {resolveComboboxItem(eachItem, props.translationLang, 'NKitab')}
       </MenuItem>
     );
   });
@@ -82,7 +98,7 @@ const SimpleSelect = props => {
     itemBab = props.bab.map((eachItem, idx) => {
       return (
         <MenuItem className={classes.setFontSize} key={eachItem.VMemberBab} value={eachItem.VMemberBab} index={idx}>
-          {eachItem.NBab}
+          {resolveComboboxItem(eachItem, props.translationLang, 'NBab')}
         </MenuItem>
       );
     });
@@ -123,6 +139,7 @@ const mapStateToProps = state => {
     shownKitab: state.valueOfShownKitab.ShownKitab,
     shownBab: state.valueOfShownKitab.ShownBab,
     shownTable: state.currentTable.shownTable,
+    translationLang: state.translationLang.language,
     // isVisible: state.showKitabNBab.isVisible
   };
 };
