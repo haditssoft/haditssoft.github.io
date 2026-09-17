@@ -15,12 +15,12 @@ const fieldSuffixByLang = {
     'Bengali': 'Ben'
 };
 
+const isFilled = (obj, field) => obj && obj[field] && String(obj[field]).trim() !== '';
+
 const resolveComboboxItem = (item, lang, baseField) => {
     const suffix = fieldSuffixByLang[lang] || '';
-    const targetField = baseField + suffix;
-    if (item && item[targetField] && String(item[targetField]).trim() !== '') {
-        return item[targetField];
-    }
+    if (isFilled(item, baseField + suffix)) return item[baseField + suffix];
+    if (isFilled(item, baseField)) return item[baseField];
     return '';
 };
 
