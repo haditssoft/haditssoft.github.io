@@ -168,3 +168,7 @@ Key exports:
 | `REACT_APP_RECAPTCHA_KEY` | Google reCAPTCHA site key |
 
 Build & deploy: `npm run build` → `firebase deploy`
+
+## Stage After Work (mandatory)
+
+Every time you finish your work, run `git add` on your changes — and ONLY your changes. Exclude any pre-existing modified files that you did not touch. Then suggest a git commit message. Never commit or create the commit yourself.
